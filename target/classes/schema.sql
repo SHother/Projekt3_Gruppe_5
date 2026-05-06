@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS bilbasen_db;
+USE bilbasen_db;
 
 DROP TABLE IF EXISTS damage;
 DROP TABLE IF EXISTS lease;
