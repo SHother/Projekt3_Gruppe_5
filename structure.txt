@@ -1,0 +1,63 @@
+Folder PATH listing for volume HDD
+Volume serial number is 9E50-FD50
+D:.
+|   .gitattributes
+|   mvnw
+|   mvnw.cmd
+|   pom.xml
+|   structure.txt
+|   
++---.github
+|   \---workflows
+|           master_bilbasenwebapp.yml
+|           
++---.idea
+|   |   .gitignore
+|   |   compiler.xml
+|   |   encodings.xml
+|   |   jarRepositories.xml
+|   |   misc.xml
+|   |   vcs.xml
+|   |   workspace.xml
+|   |   
+|   \---shelf
+|       \---Uncommitted_changes_before_Update_at_05_05_2026_13_44_[Changes]
+|               shelved.patch
+|               
++---.mvn
+|   \---wrapper
+|           maven-wrapper.properties
+|           
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---org
+|   |   |       \---example
+|   |   |           \---projekt3_gruppe_5
+|   |   |                   Projekt3Gruppe5Application.java
+|   |   |                   
+|   |   \---resources
+|   |           application.properties
+|   |           data.sql
+|   |           schema.sql
+|   |           
+|   \---test
+|       \---java
+|           \---org
+|               \---example
+|                   \---projekt3_gruppe_5
+|                           Projekt3Gruppe5ApplicationTests.java
+|                           
+\---target
+    +---classes
+    |   |   application.properties
+    |   |   data.sql
+    |   |   schema.sql
+    |   |   
+    |   \---org
+    |       \---example
+    |           \---projekt3_gruppe_5
+    |                   Projekt3Gruppe5Application.class
+    |                   
+    \---generated-sources
+        \---annotations
