@@ -23,7 +23,7 @@ public class LeaseRepository implements ILeaseRepository {
                 lease.getCustomerId(),
                 lease.getPickupDate(),
                 lease.getTurnInDate(),
-                "Bilabonoment HQ",
+                "Bilabonnement HQ",
                 "FDM Station Sjælland"
         );
     }
