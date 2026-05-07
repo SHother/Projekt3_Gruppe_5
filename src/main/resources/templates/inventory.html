@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>test1</title>
     <link rel="stylesheet" href="static/css/style.css">
-    <style>
-
-    </style>
 </head>
+
 <body>
 
 <header>
@@ -18,7 +16,14 @@
     </nav>
 </header>
 
-
+<div>
+    <div th:each="car : ${cars}">
+        <p th:text="${car.brand}"></p>
+        <p th:text="${car.model}"></p>
+        <p th:text="${car.price}"></p>
+        <p th:text="${car.fuelType}"></p>
+    </div>
+</div>
 
 <footer>
 
