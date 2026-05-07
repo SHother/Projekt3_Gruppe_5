@@ -5,12 +5,12 @@ public class Car {
     private String brand;
     private String model;
     private String status; //ledig, skadet etc
-    private float price; //pris om måneden
+    private int price; //pris om måneden
     private String fuelType;
     private float mileage; // l/km
 
     public Car(){}
-    public Car(int carId, String brand, String model, String status, float price, String fuelType, float mileage){
+    public Car(int carId, String brand, String model, String status, int price, String fuelType, float mileage){
         this.carId = carId;
         this.brand = brand;
         this.model = model;
@@ -55,7 +55,7 @@ public class Car {
     public void setStatus(String status) {
         this.status = status;
     }
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     public void setFuelType(String fuelType) {
