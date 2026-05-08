@@ -24,6 +24,13 @@ public class DashboardController {
         return "inventory";
     }
 
+
+    @GetMapping("/dataregistration")
+    public String dataregistration(Model model) {
+        return "dataregistration";
+    }
+
+
 }
 
 //test
