@@ -10,13 +10,13 @@ import java.util.List;
 
 @Repository
 public class CarRepository {
-    private static JdbcTemplate jdbcTemplate = null;
+    private final JdbcTemplate jdbcTemplate;
 
     public CarRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public static List<Car> allCars() {
+    public  List<Car> allCars() {
         String sql = "SELECT * FROM car";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Car.class));
     }
