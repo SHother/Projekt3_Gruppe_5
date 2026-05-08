@@ -1,4 +1,8 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+# Custom ignored files
 /dataSources/
+/target/
+# Temporary ignored files
+src/main/resources/application.properties
