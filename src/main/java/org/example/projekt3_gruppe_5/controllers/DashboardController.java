@@ -34,7 +34,7 @@ public class DashboardController {
     }
 
 
-    @GetMapping("/cars")
+    @GetMapping("/carFilter")
     public String showCars(
             @RequestParam(required = false) String brand,
             @RequestParam(required = false) String status,
@@ -43,7 +43,7 @@ public class DashboardController {
         List<Car> cars = carService.filterCars(brand, status);
         model.addAttribute("cars", cars);
 
-        return "cars";
+        return "inventory";
     }
 
 }
