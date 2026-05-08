@@ -18,14 +18,45 @@
 <a th:href="@{/dataregistration}">Ny lejeaftale</a>
 <a href="damage_report.html">Ny lejeaftale</a>
 
-<div>
-    <div th:each="car : ${cars}">
-        <p th:text="${car.brand}"></p>
-        <p th:text="${car.model}"></p>
-        <p th:text="${car.price}"></p>
-        <p th:text="${car.fuelType}"></p>
-    </div>
-</div>
+
+<form method="get" action="/cars">
+
+    <input type="text"
+           name="brand"
+           placeholder="Brand">
+
+    <select name="status">
+        <option value="">All</option>
+        <option value="ledig">Ledig</option>
+        <option value="skadet">Skadet</option>
+        <option value="udlejet">Udlejet</option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Vognnummer</th>
+        <th>Mærke</th>
+        <th>Model</th>
+        <th>Pris (kr/måneden)</th>
+        <th>Brændstof</th>
+        <th>Km / L</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+
+    <tr th:each="car : ${cars}">
+        <td th:text="${car.carId}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.price}"></td>
+        <td th:text="${car.fuelType}"></td>
+        <td th:text="${car.mileage}"></td>
+        <td th:text="${car.status}"></td>
+    </tr>
+</table>
 
 <footer>
 
