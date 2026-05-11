@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>test1</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -11,12 +11,15 @@
 <header>
     <nav>
         <ul>
-            <li ><a href="Logout.html">Logout</a></li>
+            <li><a th:href="@{/register_car}">Registrer ny bil</a></li>
+            <li><a th:href="@{/damage_report}">Skadesrapport</a></li>
+            <li><a th:href="@{/dataregistration}">Ny lejeaftale</a></li>
+            <li style="margin-left: auto"><a href="Logout.html">Logout</a></li>
         </ul>
     </nav>
+
+
 </header>
-<a th:href="@{/dataregistration}">Ny lejeaftale</a>
-<a href="damage_report.html">Ny lejeaftale</a>
 
 <div>
     <div th:each="car : ${cars}">

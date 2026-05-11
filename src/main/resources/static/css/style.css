@@ -1,0 +1,44 @@
+
+header nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #45275a;
+    display: flex;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    z-index: 9;
+    box-sizing: border-box;
+    font-size: 26px;
+
+}
+ul li {
+    float: left;
+}
+ul li a {
+    display: block;
+    color: white;
+    padding: 34px 36px;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+ul li a.active{
+    background-color: #469319;
+}
+
+
+
+
+
+
+body {
+    margin: 0;
+    margin-top: 150px;
+    padding: 0;
+}
