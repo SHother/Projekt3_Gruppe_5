@@ -1,13 +1,17 @@
 package org.example.projekt3_gruppe_5.controllers;
 
 
+import java.util.List;
+
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.services.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 
 @Controller
 public class DashboardController {
@@ -17,11 +21,23 @@ public class DashboardController {
         this.carService = carService;
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        model.addAttribute("cars", carService.getAllCars());
-        return "inventory";
-    }
+// POPUP VINDUET*** TEST TEST ***
+
+@GetMapping("/")
+public String index(
+        @RequestParam(required = false, defaultValue = "false")
+        
+        boolean showPopup,
+        
+        Model model) {
+
+    model.addAttribute("cars", carService.getAllCars());
+    model.addAttribute("showPopup", showPopup);
+
+    return "inventory";
+}
+
+    //--------------------------------------------------------
 
     @GetMapping("/carFilter")
     public String showCars(
@@ -37,10 +53,6 @@ public class DashboardController {
 
     //test 2
     //Header links
-    @GetMapping("/register_car")
-    public String registerCar(Model model) {
-        return "register_car";
-    }
 
     @GetMapping("/damage_report")
     public String damageReport(Model model) {
@@ -56,4 +68,33 @@ public class DashboardController {
     public String logout(Model model) {
         return "login";
     }
+
+
+
+    // NY SAVE CAR *** TEST ****
+
+
+    @PostMapping("/saveCar")
+    public String saveCar(@ModelAttribute Car car) {
+
+    carService.saveCar(car);
+
+    return "redirect:/";
+    }
+    //--------------------------------------------------------
+
+    // NY DELETE CAR *** TEST ****
+    @PostMapping("/deleteCar")
+    public String deleteCar(@RequestParam int carId) {
+
+    carService.deleteCar(carId);
+
+    return "redirect:/";
+    }
+    //--------------------------------------------------------
+
+
+
+
+    
 }

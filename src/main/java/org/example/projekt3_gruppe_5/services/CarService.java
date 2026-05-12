@@ -1,10 +1,10 @@
 package org.example.projekt3_gruppe_5.services;
 
+import java.util.List;
+
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.repositories.CarRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CarService {
@@ -24,9 +24,6 @@ public class CarService {
                     .filter(c -> c.getBrand().toLowerCase()
                             .contains(brand.toLowerCase()))
                     .toList();
-            if (cars.isEmpty()) {
-                //TODO: Maybe call an error?
-            }
         }
 
         if (status != null && !status.isEmpty()) {
@@ -42,8 +39,22 @@ public class CarService {
         return carRepository.allCars();
     }
 
-    public void updateCarStatus(int carId, String status) {
-        carRepository.updateCarStatus(carId, status);
+
+    // NY SAVE CAR *** TEST ****
+
+    public void saveCar(Car car) {
+    carRepository.insertCar(car);
     }
+
+    //--------------------------------------------------------
+
+
+    // NY DELETE CAR *** TEST ****
+
+    public void deleteCar(int carId) {
+    carRepository.deleteCar(carId);
+    }
+
+    //--------------------------------------------------------
 
 }
