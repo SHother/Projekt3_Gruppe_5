@@ -1,8 +1,7 @@
 package org.example.projekt3_gruppe_5.services;
 
-import org.example.projekt3_gruppe_5.repositories.ICustomerRepository;
-import org.example.projekt3_gruppe_5.repositories.ILeaseRepository;
-import org.example.projekt3_gruppe_5.repositories.customerRepository;
+import org.example.projekt3_gruppe_5.repositories.CustomerRepository;
+import org.example.projekt3_gruppe_5.repositories.LeaseRepository;
 import org.springframework.stereotype.Service;
 import org.example.projekt3_gruppe_5.models.Lease;
 
@@ -11,11 +10,10 @@ import java.time.LocalDate;
 @Service
 public class LeaseService {
 
+    private final LeaseRepository leaseRepository;
+    private final CustomerRepository customerRepository;
 
-    private final ILeaseRepository leaseRepository;
-    private final ICustomerRepository customerRepository;
-
-    public LeaseService(ILeaseRepository leaseRepository, ICustomerRepository customerRepository) {
+    public LeaseService(LeaseRepository leaseRepository, CustomerRepository customerRepository) {
         this.leaseRepository = leaseRepository;
         this.customerRepository = customerRepository;
 
@@ -36,7 +34,7 @@ public class LeaseService {
             throw new IllegalArgumentException("Turn in date is mandatory");
 
         }
-      int customerId = customerRepository.findOrCreateByName(customerName);
+        int customerId = customerRepository.findOrCreateByName(customerName);
 
         Lease lease = new Lease();
         lease.setCarId(carId);
@@ -45,8 +43,6 @@ public class LeaseService {
         lease.setTurnInDate(turnInDate);
 
         leaseRepository.createLease(lease);
-
-
     }
 }
 

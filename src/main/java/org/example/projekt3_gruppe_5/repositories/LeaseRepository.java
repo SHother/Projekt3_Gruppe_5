@@ -6,16 +6,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LeaseRepository implements ILeaseRepository {
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+public class LeaseRepository{
 
-    @Override
+    private final JdbcTemplate jdbcTemplate;
+
+    public LeaseRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     public void createLease(Lease lease) {
-        String sql =    "INSERT INTO lease " +
-                            "(car_id, customer_id, pickup_date, turn_in_date, pickup_location, turn_in_location) " +
-                        "VALUES " +
-                            "(?, ?, ?, ?, ?, ?)";
+        String sql =    "INSERT INTO lease (car_id, customer_id, pickup_date, turn_in_date, pickup_location, turn_in_location) " +
+                        "VALUES (?, ?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(
                 sql,
