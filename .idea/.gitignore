@@ -5,4 +5,4 @@
 /dataSources/
 /target/
 # Temporary ignored files
-src/main/resources/application.properties
+/src/main/resources/application.properties
