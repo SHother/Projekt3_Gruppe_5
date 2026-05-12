@@ -30,7 +30,7 @@ public class DataRegController {
             return "/";
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
-            return "dataregistration";
+            return "register_lease";
         }
     }
 }

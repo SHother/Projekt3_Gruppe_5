@@ -1,15 +1,11 @@
 package org.example.projekt3_gruppe_5.controllers;
 
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.services.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import org.example.projekt3_gruppe_5.repositories.CarRepository;
 
 import java.util.List;
 
@@ -51,9 +47,9 @@ public class DashboardController {
         return "damage_report";
     }
 
-    @GetMapping("/dataregistration")
-    public String dataregistration(Model model) {
-        return "dataregistration";
+    @GetMapping("/register_lease")
+    public String registerLease(Model model) {
+        return "register_lease";
     }
 
     @GetMapping("/logout")
