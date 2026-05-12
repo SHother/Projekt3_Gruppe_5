@@ -11,6 +11,10 @@ public class Lease {
     private String pickupLocation;
     private String turnInLocation;
 
+    public Lease() {
+
+    }
+
     public Lease(int leaseId, int carId, int customerId, LocalDate pickupDate, LocalDate turnInDate, String pickupLocation, String turnInLocation) {
         this.leaseId = leaseId;
         this.carId = carId;
