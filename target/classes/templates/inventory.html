@@ -8,14 +8,13 @@
 
 <body>
 
-
 <header>
     <nav>
         <ul>
-            <li><a th:href="@{/register_car}">Registrer ny bil</a></li>
+            <li><a th:href="@{/(showPopup=true)}">Registrer ny bil</a></li>
             <li><a th:href="@{/damage_report}">Skadesrapport</a></li>
-            <li><a th:href="@{/dataregistration}">Ny lejeaftale</a></li>
-            <li class="logout"><a href="#">Logout</a></li>
+            <li><a th:href="@{/register_lease}">Ny lejeaftale</a></li>
+            <li class="logout"><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </nav>
 </header>
@@ -23,7 +22,7 @@
 
 <div class="dashboard-container">
 
-<! Bil liste ----------------------------------------------------------------------------- >
+<!-- Bil liste ----------------------------------------------------------------------------- -->
 
     <div class="Car-overview">
 
@@ -72,7 +71,11 @@
                 <td class="action-buttons">
                     <button class="edit-button">Rediger</button>
                     <button class="report-button">Skaderapport</button>
-                    <button class="delete-button">Slet</button>
+
+                    <form th:action="@{/deleteCar}" method="post" style="display:inline;">
+                    <input type="hidden" name="carId" th:value="${car.carId}">
+                    <button type="submit" class="delete-button">Slet</button>
+</form>
                 </td>
             </tr>
             </tbody>
@@ -80,14 +83,14 @@
 
     </div>
 
-<! DIAGRAMMER----------------------------------------------------------------------------- >
+<!-- DIAGRAMMER----------------------------------------------------------------------------- -->
     <div class="side-panel">
 
         <div class="diagram-box">
             <h3>Lageroversigt</h3>
 
             <div class="circle-diagram">
-                
+
             </div>
         </div>
 
@@ -95,13 +98,89 @@
             <h3>Graf 2</h3>
 
             <div class="bar-chart">
-                
+
             </div>
         </div>
 
     </div>
 
 </div>
+
+
+<!-- Registrer ny bil popup----------------------------------------------------------------------------- -->
+<div th:if="${showPopup}" class="popup-overlay">
+
+    <div class="popup-container">
+
+        <h1>Registrer Bil</h1>
+
+        <form action="/saveCar" method="post">
+
+            <div class="form-group">
+                <label>Vognnummer</label>
+                <input type="text" name="carId">
+            </div>
+
+            <div class="form-group">
+                <label>Mærke</label>
+                <input type="text" name="brand">
+            </div>
+
+            <div class="form-group">
+                <label>Model</label>
+                <input type="text" name="model">
+            </div>
+
+            <div class="form-group">
+                <label>Pris</label>
+                <input type="number" name="price">
+            </div>
+
+            <div class="form-group">
+                <label>Brændstof</label>
+                <input type="text" name="fuelType">
+            </div>
+
+            <div class="form-group">
+                <label>Km/l</label>
+                <input type="number" step="0.1" name="mileage">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+
+                <select name="status">
+                    <option value="Ledig">Ledig</option>
+                    <option value="Udlejet">Udlejet</option>
+                    <option value="Skadet">Skadet</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+
+                <button type="submit" class="save-btn">
+                    Gem Bil
+                </button>
+
+                <a th:href="@{/}" class="cancel-btn">
+                    Luk
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
 
 </body>
 </html>
