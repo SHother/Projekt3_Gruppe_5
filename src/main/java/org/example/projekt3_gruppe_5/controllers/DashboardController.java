@@ -21,18 +21,11 @@ public class DashboardController {
         this.carService = carService;
     }
 
-
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("cars", carService.getAllCars());
         return "inventory";
     }
-
-    @GetMapping("/dataregistration")
-    public String dataregistration(Model model) {
-        return "dataregistration";
-    }
-
 
     @GetMapping("/carFilter")
     public String showCars(
@@ -46,6 +39,24 @@ public class DashboardController {
         return "inventory";
     }
 
-}
+    //Header links
+    @GetMapping("/register_car")
+    public String registerCar(Model model) {
+        return "register_car";
+    }
 
-//test
+    @GetMapping("/damage_report")
+    public String damageReport(Model model) {
+        return "damage_report";
+    }
+
+    @GetMapping("/dataregistration")
+    public String dataregistration(Model model) {
+        return "dataregistration";
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model) {
+        return "login";
+    }
+}
