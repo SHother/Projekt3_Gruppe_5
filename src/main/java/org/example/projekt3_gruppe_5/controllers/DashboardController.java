@@ -1,15 +1,11 @@
 package org.example.projekt3_gruppe_5.controllers;
 
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.services.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import org.example.projekt3_gruppe_5.repositories.CarRepository;
 
 import java.util.List;
 
@@ -21,18 +17,11 @@ public class DashboardController {
         this.carService = carService;
     }
 
-
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("cars", carService.getAllCars());
         return "inventory";
     }
-
-    @GetMapping("/dataregistration")
-    public String dataregistration(Model model) {
-        return "dataregistration";
-    }
-
 
     @GetMapping("/carFilter")
     public String showCars(
@@ -46,6 +35,25 @@ public class DashboardController {
         return "inventory";
     }
 
-}
+    //test 2
+    //Header links
+    @GetMapping("/register_car")
+    public String registerCar(Model model) {
+        return "register_car";
+    }
 
-//test
+    @GetMapping("/damage_report")
+    public String damageReport(Model model) {
+        return "damage_report";
+    }
+
+    @GetMapping("/register_lease")
+    public String registerLease(Model model) {
+        return "register_lease";
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model) {
+        return "login";
+    }
+}

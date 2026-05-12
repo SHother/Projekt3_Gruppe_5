@@ -23,13 +23,8 @@ public class Projekt3Gruppe5Application implements CommandLineRunner {
         System.out.println("Hello World!");
     }
 
+    // for testing random stuff
     @Override
     public void run(String... args) {
-        List<Car> cars = carRepository.allCars();
-        for (Car car : cars) {
-            System.out.println(car.getModel());
-        }
-
     }
-
 }

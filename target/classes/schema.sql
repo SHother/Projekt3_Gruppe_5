@@ -18,7 +18,7 @@ CREATE TABLE car (
 
 CREATE TABLE customer (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
+    customer_name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE lease (
