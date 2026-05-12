@@ -39,6 +39,7 @@ public class DashboardController {
         return "inventory";
     }
 
+    //test
     //Header links
     @GetMapping("/register_car")
     public String registerCar(Model model) {
