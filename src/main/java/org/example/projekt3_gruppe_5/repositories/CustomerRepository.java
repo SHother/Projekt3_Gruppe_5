@@ -28,5 +28,6 @@ public class CustomerRepository{
 public void insertCustomer(String customerName, String address, String city, String zipCode, String email, String phone) {
     String sql = "INSERT INTO customer (customer_name, address, city, zip_code, email, phone) VALUES (?, ?, ?, ?, ?, ?)";
     jdbcTemplate.update(sql, customerName, address, city, zipCode, email, phone);
+    System.out.println("Hello World1");
     }
 }
