@@ -32,7 +32,7 @@ public class Car {
     public String getStatus() {
         return status;
     }
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
     public String getFuelType() {

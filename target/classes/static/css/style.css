@@ -212,3 +212,129 @@ tbody tr:hover{
 
     border:2px dashed #bbb;
 }
+
+
+
+/* Registrer ny bil popup-------------------------------------- */
+
+.popup-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.45);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+}
+
+
+.popup-container{
+    width:650px;
+
+    background:#e8e8e8;
+
+    padding:40px;
+
+    border-radius:40px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.popup-container h1{
+    text-align:center;
+    margin-bottom:35px;
+    color:#000;
+}
+
+
+.form-group{
+    display:grid;
+    grid-template-columns:150px 1fr;
+
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.form-group label{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.form-group input,
+.form-group select{
+    padding:12px;
+
+    border:1px solid #999;
+    border-radius:4px;
+
+    font-size:16px;
+}
+
+/* Popup buttons------------------------------------ */
+
+.button-group{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+    margin-top:30px;
+}
+
+.save-btn{
+    background:#45275a;
+    color:white;
+
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+.save-btn:hover{
+    background:#5d3578;
+}
+
+.cancel-btn{
+    background:#999;
+    color:white;
+
+    padding:14px 28px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+}
+
+.cancel-btn:hover{
+    background:#777;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
