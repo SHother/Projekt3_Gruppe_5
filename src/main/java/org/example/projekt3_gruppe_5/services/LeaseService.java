@@ -1,11 +1,13 @@
 package org.example.projekt3_gruppe_5.services;
 
+import org.example.projekt3_gruppe_5.models.Customer;
 import org.example.projekt3_gruppe_5.repositories.CustomerRepository;
 import org.example.projekt3_gruppe_5.repositories.LeaseRepository;
 import org.springframework.stereotype.Service;
 import org.example.projekt3_gruppe_5.models.Lease;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class LeaseService {
@@ -19,30 +21,46 @@ public class LeaseService {
 
     }
 
-    public void createLease(String customerName, int carId, LocalDate pickupDate, LocalDate turnInDate) {
+    public void createLease(String customerIdAsString, String carIdAsString, LocalDate pickupDate, LocalDate turnInDate, String pickUpLocation, String turnInLocation) {
+        //Søren
+        //TODO: find en anden løsning end casting?
+        int customerId = Integer.parseInt(customerIdAsString);
+        int carId = Integer.parseInt(carIdAsString);
 
-        if (customerName == null || customerName.isBlank()) {
-            throw new IllegalArgumentException("Customer name is mandatory");
+        if (customerId <= 0) {
+            throw new IllegalArgumentException("Kundenavn er obligatorisk");
         }
         if (carId <= 0) {
-            throw new IllegalArgumentException("Car number is mandatory");
+            throw new IllegalArgumentException("Vognnummer er obligatorisk");
         }
         if (pickupDate == null) {
-            throw new IllegalArgumentException("Pickup-date is mandatory");
+            throw new IllegalArgumentException("Afhentningsdato er obligatorisk");
         }
         if (turnInDate == null) {
-            throw new IllegalArgumentException("Turn in date is mandatory");
-
+            throw new IllegalArgumentException("Afleveringsdato er obligatorisk");
         }
-        int customerId = customerRepository.findOrCreateByName(customerName);
+        if (pickUpLocation == null) {
+            throw new IllegalArgumentException("Afhentningslokation er obligatorisk");
+        }
+        if (turnInLocation == null) {
+            throw new IllegalArgumentException("Afleveringslokation er obligatorisk");
+        }
+
+        //TODO: Check om bilen allerede er udlejet i den valgte periode
 
         Lease lease = new Lease();
         lease.setCarId(carId);
         lease.setCustomerId(customerId);
         lease.setPickupDate(pickupDate);
         lease.setTurnInDate(turnInDate);
+        lease.setPickupLocation(pickUpLocation);
+        lease.setTurnInLocation(turnInLocation);
 
         leaseRepository.createLease(lease);
+    }
+
+    public List<Customer> getAllCustomers() {
+        return customerRepository.allCustomer();
     }
 }
 

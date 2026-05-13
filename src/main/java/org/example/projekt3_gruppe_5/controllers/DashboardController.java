@@ -4,7 +4,10 @@ package org.example.projekt3_gruppe_5.controllers;
 import java.util.List;
 
 import org.example.projekt3_gruppe_5.models.Car;
+import org.example.projekt3_gruppe_5.models.Customer;
+import org.example.projekt3_gruppe_5.models.Lease;
 import org.example.projekt3_gruppe_5.services.CarService;
+import org.example.projekt3_gruppe_5.services.LeaseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DashboardController {
     private final CarService carService;
+    private final LeaseService leaseService;
 
-    public DashboardController(CarService carService) {
+    public DashboardController(CarService carService, LeaseService leaseService) {
         this.carService = carService;
+        this.leaseService = leaseService;
     }
 
 // POPUP VINDUET*** TEST TEST ***
@@ -60,7 +65,13 @@ public String index(
     }
 
     @GetMapping("/register_lease")
-    public String registerLease(Model model) {
+    public String createLeaseForm(Model model) {
+        List<Customer> customers = leaseService.getAllCustomers();
+        List<Car> cars = carService.getAllCars();
+
+        model.addAttribute("customers", customers);
+        model.addAttribute("cars", cars);
+        model.addAttribute("lease", new Lease());
         return "register_lease";
     }
 
@@ -76,9 +87,8 @@ public String index(
 
     @PostMapping("/saveCar")
     public String saveCar(@ModelAttribute Car car) {
-
-    carService.saveCar(car);
-
+        //TODO: check input
+        carService.saveCar(car);
     return "redirect:/";
     }
     //--------------------------------------------------------
@@ -87,8 +97,7 @@ public String index(
     @PostMapping("/deleteCar")
     public String deleteCar(@RequestParam int carId) {
 
-    carService.deleteCar(carId);
-
+        carService.deleteCar(carId);
     return "redirect:/";
     }
     //--------------------------------------------------------
