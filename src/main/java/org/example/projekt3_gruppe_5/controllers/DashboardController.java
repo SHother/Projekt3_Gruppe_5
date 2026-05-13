@@ -23,19 +23,25 @@ public class DashboardController {
 
 // POPUP VINDUET*** TEST TEST ***
 
+// REGISTER CAR og OPRET SKADERAPPORT
+
 @GetMapping("/")
-public String index(
-        @RequestParam(required = false, defaultValue = "false")
-        
-        boolean showPopup,
-        
+public String dashboard(
+        @RequestParam(required = false) Boolean showPopup,
+        @RequestParam(required = false) Boolean showDamagePopup,
         Model model) {
 
     model.addAttribute("cars", carService.getAllCars());
-    model.addAttribute("showPopup", showPopup);
+
+    model.addAttribute("showPopup",
+            showPopup != null && showPopup);
+
+    model.addAttribute("showDamagePopup",
+            showDamagePopup != null && showDamagePopup);
 
     return "inventory";
 }
+
 
     //--------------------------------------------------------
 

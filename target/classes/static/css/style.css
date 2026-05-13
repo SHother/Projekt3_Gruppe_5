@@ -22,7 +22,7 @@ header nav ul{
     top:0;
     width:100%;
 
-    background:#45275a;
+    background:#696969;
 
     z-index:1000;
 }
@@ -64,7 +64,7 @@ header nav ul li a:hover{
 }
 
 .filter-box button{
-    background:#45275a;
+    background:#696969;
     color:white;
     border:none;
 
@@ -75,7 +75,7 @@ header nav ul li a:hover{
 }
 
 .filter-box button:hover{
-    background:#5e367a;
+    background:#acabab;
 }
 
 /* Bil Tabel--------------------------------------------- */
@@ -86,7 +86,7 @@ table{
 }
 
 thead{
-    background:#45275a;
+    background:#696969;
     color:white;
 }
 
@@ -128,13 +128,19 @@ tbody tr:hover{
     color:white;
 }
 
-.action-buttons button{
+.action-buttons button,
+.action-buttons a{
     border:none;
     padding:8px 12px;
     border-radius:20px;
 
     cursor:pointer;
     font-size:12px;
+
+    text-decoration:none;
+    color:black;
+
+    display:inline-block;
 }
 
 
@@ -161,7 +167,7 @@ tbody tr:hover{
 }
 
 
-/* Kasser højreside------------------------------------ */
+/* Kasser venstreside------------------------------------ */
 
 .side-panel{
     display:flex;
@@ -324,6 +330,157 @@ tbody tr:hover{
 
 
 
+/* Skaderapport popup ------------------------------------- */
+
+.dmg-popup-container{
+    width:700px;
+
+    background:#dcdcdc;
+
+    padding:35px;
+
+    border-radius:40px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.dmg-popup-container h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+/* vælg bil------------------------------------------------- */
+.dmg-select-group{
+    margin-bottom:25px;
+}
+
+.dmg-select-group label{
+    display:block;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.dmg-select-group select{
+    width:100%;
+    padding:12px;
+
+    font-size:18px;
+
+    border:1px solid #888;
+    border-radius:6px;
+
+    background:white;
+}
+
+.dmg-rapport-content{
+    display:flex;
+    gap:25px;
+}
+
+/* Venstre side popup vinduet---------------------------------------- */
+.dmg-left{
+    flex:1;
+}
+
+.dmg-left label{
+    display:block;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.dmg-left textarea{
+    width:100%;
+    height:220px;
+
+    resize:none;
+
+    padding:15px;
+
+    border:1px solid #999;
+    border-radius:6px;
+
+    font-size:16px;
+}
+
+/* højre side popup vinduet---------------------------------------- */
+.dmg-rapport-right{
+    width:150px;
+
+    margin-top:45px;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.price-btn,.status-btn{
+    width:120px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+    font-weight:bold;
+
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.price-btn:hover,.status-btn:hover{
+    background:#efefef;
+}
+
+/* Buttons i bunden af popupvinduet---------------------------------------- */
+
+/* Button navne skal evt. laves om. registrer bil buttons hedder btn og skaderapport buttons */
+
+.damage-button-group{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+
+    margin-top:25px;
+}
+
+.Opret-button{
+    background:#999;
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.Opret-button:hover{
+    background:rgba(105,195,216,1);
+}
+
+.cancel-button{
+    background:#999;
+    color:white;
+
+    padding:14px 28px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+}
+
+.cancel-button:hover{
+    background:#777;
+}
 
 
 
