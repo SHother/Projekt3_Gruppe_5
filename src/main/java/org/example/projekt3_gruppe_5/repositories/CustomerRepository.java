@@ -1,5 +1,6 @@
 package org.example.projekt3_gruppe_5.repositories;
 
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,5 +24,9 @@ public class CustomerRepository{
         jdbcTemplate.update("INSERT INTO customer (customer_name) VALUES (?)",customerName);
         return jdbcTemplate.queryForObject(findSql, Integer.class, customerName);
         }
+    }
+public void insertCustomer(String customerName, String address, String city, String zipCode, String email, String phone) {
+    String sql = "INSERT INTO customer (customer_name, address, city, zip_code, email, phone) VALUES (?, ?, ?, ?, ?, ?)";
+    jdbcTemplate.update(sql, customerName, address, city, zipCode, email, phone);
     }
 }

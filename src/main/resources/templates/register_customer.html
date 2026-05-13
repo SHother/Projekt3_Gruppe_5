@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrer kunde</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<main>
+    <h1>Registrer ny kunde</h1>
+
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
+    <form action="/register_customer" method="post">
+
+        <label for="customerName">Navn</label>
+        <input type="text" id="customerName" name="customerName" placeholder>
+
+        <label for="address">Adresse</label>
+        <input type="text" id="address" name="address" placeholder>
+        <label for="zipCode">Postnummer</label>
+        <input type="text" id="zipCode" name="zipCode">
+
+        <label for="email">E-mailadresse</label>
+        <input type="email" id="email" name="email">
+
+        <label for="phone">Telefonnummer</label>
+        <input type="tel" id="phone" name="phone">
+
+        <button type="submit">Opret kunde</button>
+    </form>
+</main>
+
+</body>
+</html>

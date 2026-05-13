@@ -64,6 +64,11 @@ public String index(
         return "register_lease";
     }
 
+    @GetMapping("/register_customer")
+    public String registerCustomer(Model model) {
+        return "register_customer";
+    }
+
     @GetMapping("/logout")
     public String logout(Model model) {
         return "login";
