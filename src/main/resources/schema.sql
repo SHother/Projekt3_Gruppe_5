@@ -18,7 +18,13 @@ CREATE TABLE car (
 
 CREATE TABLE customer (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(100) NOT NULL
+    customer_name VARCHAR(100) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR (20),
+    zip_code VARCHAR(10),
+    email VARCHAR(100),
+    phone VARCHAR(50)
+
 );
 
 CREATE TABLE lease (
@@ -42,3 +48,4 @@ CREATE TABLE damage (
     status VARCHAR(50) DEFAULT 'Skadet',
     FOREIGN KEY (lease_id) REFERENCES lease(lease_id)
 );
+

@@ -39,4 +39,9 @@ public class CustomerRepository{
         String sql = "SELECT * from customer WHERE customer_id = ?";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Customer.class),customerId);
     }
+
+    public void insertCustomer(String customerName, String address, String city, String zipCode, String email, String phone) {
+        String sql = "INSERT INTO customer (customer_name, address, city, zip_code, email, phone) VALUES (?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, customerName, address, city, zipCode, email, phone);
+    }
 }
