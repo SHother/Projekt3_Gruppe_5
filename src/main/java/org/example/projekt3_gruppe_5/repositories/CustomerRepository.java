@@ -40,8 +40,14 @@ public class CustomerRepository{
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Customer.class),customerId);
     }
 
-    public void insertCustomer(String customerName, String address, String city, String zipCode, String email, String phone) {
+    public void insertCustomer(Customer customer) {
         String sql = "INSERT INTO customer (customer_name, address, city, zip_code, email, phone) VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, customerName, address, city, zipCode, email, phone);
+        jdbcTemplate.update(sql,
+                customer.getCustomerName(),
+                customer.getAddress(),
+                customer.getCity(),
+                customer.getZipCode(),
+                customer.getEmail(),
+                customer.getPhone());
     }
 }
