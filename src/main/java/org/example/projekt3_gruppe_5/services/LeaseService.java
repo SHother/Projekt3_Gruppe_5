@@ -21,11 +21,8 @@ public class LeaseService {
 
     }
 
-    public void createLease(String customerIdAsString, String carIdAsString, LocalDate pickupDate, LocalDate turnInDate, String pickUpLocation, String turnInLocation) {
+    public void createLease(int customerId, int carId, LocalDate pickupDate, LocalDate turnInDate, String pickUpLocation, String turnInLocation) {
         //Søren
-        //TODO: find en anden løsning end casting?
-        int customerId = Integer.parseInt(customerIdAsString);
-        int carId = Integer.parseInt(carIdAsString);
 
         if (customerId <= 0) {
             throw new IllegalArgumentException("Kundenavn er obligatorisk");

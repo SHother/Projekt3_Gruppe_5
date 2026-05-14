@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label>Kundenavn</label>
-            <select id="customerId" name="customerId">
+            <select id="customerId" name="customerIdAsString">
                 <option value=-1>-</option>
                 <option
                         th:each="customer : ${customers}"
@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label>Vognnummer</label>
-            <select id="carId" name="carId">
+            <select id="carId" name="carIdAsString">
                 <option value=-1>-</option>
                 <option
                         th:each="car : ${cars}"

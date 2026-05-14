@@ -67,7 +67,7 @@ public String index(
     @GetMapping("/register_lease")
     public String createLeaseForm(Model model) {
         List<Customer> customers = leaseService.getAllCustomers();
-        List<Car> cars = carService.getAllCars();
+        List<Car> cars = carService.filterCars(null, "Ledig");
 
         model.addAttribute("customers", customers);
         model.addAttribute("cars", cars);

@@ -48,6 +48,7 @@ public class Customer {
     public String getPhone() {
         return phone;
     }
+
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
