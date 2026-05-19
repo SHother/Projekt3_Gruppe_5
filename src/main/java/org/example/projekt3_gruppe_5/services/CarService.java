@@ -1,6 +1,7 @@
 package org.example.projekt3_gruppe_5.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.repositories.CarRepository;
@@ -56,5 +57,17 @@ public class CarService {
     }
 
     //--------------------------------------------------------
+
+
+
+    // NY cirkel diagram car status ****TESTING*****
+
+    public Map<String, Integer> getStatusCounts() {
+        return carRepository.getStatusCounts();
+    }
+
+
+    //--------------------------------------------------------
+
 
 }

@@ -90,9 +90,20 @@
         <div class="diagram-box">
             <h3>Lageroversigt</h3>
 
-            <div class="circle-diagram">
-
+            <div class="circle-diagram"
+                th:style="'background: conic-gradient(' +
+                '#4caf50 0% ' + ${ledigPct} + '%, ' +
+                '#ff9800 0% ' + ${udlejetPct} + '%, ' +
+                '#f44336 0% 100%)'">
             </div>
+
+            <div class="diagram-status-box">
+                <p><span class="status-box-farve ledig"></span> Ledig: <span th:text="${ledig}"></span></p>
+                <p><span class="status-box-farve udlejet"></span> Udlejet: <span th:text="${udlejet}"></span></p>
+                <p><span class="status-box-farve skadet"></span> Skadet: <span th:text="${skadet}"></span></p>
+            </div>
+
+            
         </div>
 
         <div class="diagram-box">
