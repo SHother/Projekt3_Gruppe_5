@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register bil</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<main>
+    <h1>Registrer ny lejeaftale</h1>
+
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
+    <form action="/register_new_car" method="post">
+
+        <label for="customerName">Car test</label>
+        <input type="text" id="customerName" name="customerName">
+
+        <label for="carId">Vognnummer</label>
+        <input type="number" id="carId" name="carId">
+
+        <label for="pickupDate">Startdato</label>
+        <input type="date" id="pickupDate" name="pickupDate">
+
+        <label for="turnInDate">Slutdato</label>
+        <input type="date" id="turnInDate" name="turnInDate">
+
+        <button type="submit">Opret lejeaftale</button>
+    </form>
+</main>
+
+</body>
+</html>

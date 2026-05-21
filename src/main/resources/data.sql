@@ -2,7 +2,7 @@ INSERT INTO car (brand, model, status, price, fuel_type, mileage) VALUES
 ('Peugeot', '208', 'Udlejet', 3000, 'Benzin', 15000.5),
 ('DS Automobiles', 'DS 4', 'Ledig', 4500, 'Hybrid', 1200.0);
 
-INSERT INTO customer (name) VALUES
+INSERT INTO customer (customer_name) VALUES
 ('Jens Hansen'),
 ('Mette Frederiksen');
 

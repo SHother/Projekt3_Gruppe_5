@@ -24,6 +24,9 @@ public class CarService {
                     .filter(c -> c.getBrand().toLowerCase()
                             .contains(brand.toLowerCase()))
                     .toList();
+            if (cars.isEmpty()) {
+                //TODO: Maybe call an error?
+            }
         }
 
         if (status != null && !status.isEmpty()) {
@@ -37,6 +40,10 @@ public class CarService {
 
     public List<Car> getAllCars() {
         return carRepository.allCars();
+    }
+
+    public void updateCarStatus(int carId, String status) {
+        carRepository.updateCarStatus(carId, status);
     }
 
 }
