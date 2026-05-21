@@ -31,20 +31,35 @@ public class DashboardController {
 
 // REGISTER CAR og OPRET SKADERAPPORT
 
-@GetMapping("/")
-public String dashboard(
-        @RequestParam(required = false) Boolean showPopup,
-        @RequestParam(required = false) Boolean showDamagePopup,
-        Model model) {
+    @GetMapping("/")
+    public String dashboard(
+            @RequestParam(required = false) Boolean showPopup,
+            @RequestParam(required = false) Boolean showDamagePopup,
+            @RequestParam(required = false) Boolean showCustomerPopup,
+            @RequestParam(required = false) Boolean showLeasePopup,
+            Model model) {
 
-    model.addAttribute("cars", carService.getAllCars());
+        model.addAttribute("cars", carService.getAllCars());
 
-    model.addAttribute("showPopup",
-            showPopup != null && showPopup);
+        model.addAttribute("showPopup",
+                showPopup != null && showPopup);
 
-    model.addAttribute("showDamagePopup",
-            showDamagePopup != null && showDamagePopup);
+        model.addAttribute("showDamagePopup",
+                showDamagePopup != null && showDamagePopup);
 
+        model.addAttribute("showCustomerPopup",
+                showCustomerPopup != null && showCustomerPopup);
+
+        model.addAttribute("showLeasePopup",
+                showLeasePopup != null && showLeasePopup);
+
+
+        List<Customer> customers = leaseService.getAllCustomers();
+        List<Car> availableCars = carService.filterCars(null, "Ledig");
+
+        model.addAttribute("customers", customers);
+        model.addAttribute("availableCars", availableCars);
+        model.addAttribute("lease", new Lease());
 
     // NY cirkel diagram car status ****TESTING*****        
 
@@ -106,14 +121,8 @@ public String dashboard(
     }
 
     @GetMapping("/register_lease")
-    public String createLeaseForm(Model model) {
-        List<Customer> customers = leaseService.getAllCustomers();
-        List<Car> cars = carService.filterCars(null, "Ledig");
-
-        model.addAttribute("customers", customers);
-        model.addAttribute("cars", cars);
-        model.addAttribute("lease", new Lease());
-        return "register_lease";
+    public String createLeaseForm() {
+        return "redirect:/?showLeasePopup=true";
     }
 
     @GetMapping("/register_customer")

@@ -1,14 +1,15 @@
-<div th:fragment="navbar">   
+<div th:fragment="navbar">
 
     <header>
         <nav>
             <ul>
                 <li><a th:href="@{/(showPopup=true)}">Registrer ny bil</a></li>
-                <li><a th:href="@{/(showDamagePopup=true)}">Opret Skadesrapport</a></li>
-                <li><a th:href="@{/register_lease}">Ny lejeaftale</a></li>
+                <li><a th:href="@{/(showDamagePopup=true)}">Opret skadesrapport</a></li>
+                <li><a th:href="@{/(showCustomerPopup=true)}">Ny kunde</a></li>
+                <li><a th:href="@{/(showLeasePopup=true)}">Ny lejeaftale</a></li>
                 <li class="logout"><a th:href="@{/logout}">Logout</a></li>
             </ul>
         </nav>
     </header>
-    
+
 </div>

@@ -3,7 +3,6 @@ package org.example.projekt3_gruppe_5.controllers;
 import org.example.projekt3_gruppe_5.services.CarService;
 import org.example.projekt3_gruppe_5.services.CustomerService;
 import org.example.projekt3_gruppe_5.services.LeaseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
