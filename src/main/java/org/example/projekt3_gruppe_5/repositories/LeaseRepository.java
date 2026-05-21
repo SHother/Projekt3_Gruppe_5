@@ -24,8 +24,8 @@ public class LeaseRepository{
                 lease.getCustomerId(),
                 lease.getPickupDate(),
                 lease.getTurnInDate(),
-                "Bilabonnement HQ",
-                "FDM Station Sjælland"
+                lease.getPickupLocation(),
+                lease.getTurnInLocation()
         );
     }
 }

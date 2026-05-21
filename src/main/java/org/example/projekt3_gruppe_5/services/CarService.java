@@ -40,6 +40,9 @@ public class CarService {
         return carRepository.allCars();
     }
 
+    public void updateStatus(int carId, String status) {
+        carRepository.updateCarStatus(carId, status);
+    }
 
     // NY SAVE CAR *** TEST ****
 
