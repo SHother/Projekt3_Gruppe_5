@@ -2,6 +2,7 @@ package org.example.projekt3_gruppe_5.controllers;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.services.CarService;
@@ -39,7 +40,41 @@ public String dashboard(
     model.addAttribute("showDamagePopup",
             showDamagePopup != null && showDamagePopup);
 
+
+    // NY cirkel diagram car status ****TESTING*****        
+
+    Map<String, Integer> counts = carService.getStatusCounts();
+
+    int ledig = counts.getOrDefault("ledig", 0);
+    int udlejet = counts.getOrDefault("udlejet", 0);
+    int skadet = counts.getOrDefault("skadet", 0);
+
+    // jeg har brugt .getOrDefault for at "int" aldrig bliver retuneret som null fra databasen        
+
+    int total = ledig + udlejet + skadet;
+    if (total == 0) total = 1;
+
+    //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0 på (linje 64)
+
+    model.addAttribute("ledig", ledig);
+    model.addAttribute("udlejet", udlejet);
+    model.addAttribute("skadet", skadet);
+    model.addAttribute("total", total);
+
+    double ledigPct = (ledig * 100.0) / total;
+    double udlejetPct = ((ledig + udlejet) * 100.0) / total;
+
+    model.addAttribute("ledigPct", ledigPct);
+    model.addAttribute("udlejetPct", udlejetPct);
+
+
+
+
+      //----------------------------------------------------------  cirkel diagram slut    
+
+
     return "inventory";
+
 }
 
 
@@ -98,6 +133,9 @@ public String dashboard(
     return "redirect:/";
     }
     //--------------------------------------------------------
+
+    
+
 
 
 

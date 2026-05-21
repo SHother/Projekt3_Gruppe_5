@@ -207,6 +207,46 @@ tbody tr:hover{
     margin:auto;
 }
 
+/* Cirkeldiagram (status box)----------------------------------- */
+
+.diagram-status-box {
+    margin-top: 15px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.diagram-status-box p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.status-box-farve {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.status-box-farve.ledig {
+    background-color: #4caf50;
+}
+
+.status-box-farve.udlejet {
+    background-color: #ff9800;
+}
+
+.status-box-farve.skadet {
+    background-color: #f44336;
+}
+
+
+
+
+
 /* Søjlediagram-------------------------------------- */
 
 .bar-chart{
@@ -486,7 +526,7 @@ tbody tr:hover{
 
 
 
-
+/* gutter vi skal lige have set på vores css. deles evt. op i flere filer vi er på +500 linjer nu */
 
 
 

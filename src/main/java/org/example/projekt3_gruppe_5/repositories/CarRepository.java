@@ -1,6 +1,8 @@
 package org.example.projekt3_gruppe_5.repositories;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.example.projekt3_gruppe_5.models.Car;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -56,5 +58,29 @@ public class CarRepository {
     }
 
     //--------------------------------------------------------
+
+
+    // NY cirkel diagram car status ****TESTING*****--------------------------------------------------------
+
+    public Map<String, Integer> getStatusCounts() {
+        String sql = """
+            SELECT status, COUNT(*) as count
+            FROM car
+            GROUP BY status
+        """;
+
+        return jdbcTemplate.query(sql, rs -> {
+            Map<String, Integer> map = new HashMap<>();
+            while (rs.next()) {
+                map.put(rs.getString("status").toLowerCase(), rs.getInt("count"));
+            }
+            return map;
+        });
+    }
+
+    //--------------------------------------------------------
+
+
+
     
 }

@@ -1,0 +1,81 @@
+<div th:fragment="damagePopup">
+
+    <div th:if="${showDamagePopup}" class="popup-overlay">
+
+        <div class="dmg-popup-container">
+
+            <h1>Skaderapport</h1>
+
+            <form action="/saveDamageReport" method="post">
+
+                
+                <div class="dmg-select-group">
+
+                    <label>Vælg Bil</label>
+
+                    <select name="vBil">      <!-- skal ændres så den henter bilerne i databasen *** -->
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+
+                </div>
+
+
+                <div class="dmg-rapport-content">
+
+
+                    <div class="dmg-left">
+
+                        <label>Beskriv Skader</label>
+
+                        <textarea name="description" placeholder="Beskrivelse..."></textarea>
+
+                    </div>
+
+
+                    <div class="dmg-rapport-right">
+
+                        <div class="dmg-form-group">
+                            <label>Pris</label>
+                            <input type="number" name="price">
+                        </div>
+
+                        <div class="dmg-form-group">
+                            <label>Status</label>
+
+                            <select name="status">
+                                <option value="Udbedret">Udbedret</option>
+                                <option value="under udbedring">Under udbedring</option>
+                                <option value="ikke indberettet">Ikke indberettet</option>
+                            </select>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="damage-button-group">
+
+                    <button type="submit" class="Opret-button">
+                        Opret
+                    </button>
+
+                    <a th:href="@{/}" class="cancel-button">
+                        Annuller
+                    </a>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>

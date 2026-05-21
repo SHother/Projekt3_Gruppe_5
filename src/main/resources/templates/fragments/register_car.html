@@ -1,0 +1,69 @@
+<div th:fragment="registerCarPopup">  
+    
+    <div th:if="${showPopup}" class="popup-overlay">
+
+        <div class="popup-container">
+
+            <h1>Registrer Bil</h1>
+
+            <form action="/saveCar" method="post">
+
+                <div class="form-group">
+                    <label>Vognnummer</label>
+                    <input type="text" name="carId">
+                </div>
+
+                <div class="form-group">
+                    <label>Mærke</label>
+                    <input type="text" name="brand">
+                </div>
+
+                <div class="form-group">
+                    <label>Model</label>
+                    <input type="text" name="model">
+                </div>
+
+                <div class="form-group">
+                    <label>Pris</label>
+                    <input type="number" name="price">
+                </div>
+
+                <div class="form-group">
+                    <label>Brændstof</label>
+                    <input type="text" name="fuelType">
+                </div>
+
+                <div class="form-group">
+                    <label>Km/l</label>
+                    <input type="number" step="0.1" name="mileage">
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+
+                    <select name="status">
+                        <option value="Ledig">Ledig</option>
+                        <option value="Udlejet">Udlejet</option>
+                        <option value="Skadet">Skadet</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+
+                    <button type="submit" class="save-btn">
+                        Gem Bil
+                    </button>
+
+                    <a th:href="@{/}" class="cancel-btn">
+                        Luk
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+    
+</div>  
