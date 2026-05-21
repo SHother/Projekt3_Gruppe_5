@@ -1,12 +1,13 @@
 package org.example.projekt3_gruppe_5.repositories;
 
-import org.example.projekt3_gruppe_5.models.Car;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import org.example.projekt3_gruppe_5.models.Car;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class CarRepository {
@@ -25,4 +26,61 @@ public class CarRepository {
         String sql = "UPDATE car SET status = ? WHERE car_id = ?";
         jdbcTemplate.update(sql, status, carId);
     }
+
+
+
+    // NY SAVE CAR *** TEST ****
+
+    public void insertCar(Car car) {
+    String sql = """
+        INSERT INTO car (car_id, brand, model, status, price, fuel_type, mileage)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    """;
+
+        jdbcTemplate.update(sql,
+                car.getCarId(),
+                car.getBrand(),
+                car.getModel(),
+                car.getStatus(),
+                car.getPrice(),
+                car.getFuelType(),
+                car.getMileage()
+        );
+    }
+
+    //--------------------------------------------------------
+
+    // NY DELETE CAR *** TEST ****
+
+    public void deleteCar(int carId) {
+    String sql = "DELETE FROM car WHERE car_id = ?";
+    jdbcTemplate.update(sql, carId);
+    }
+
+    //--------------------------------------------------------
+
+
+    // NY cirkel diagram car status ****TESTING*****--------------------------------------------------------
+
+    public Map<String, Integer> getStatusCounts() {
+        String sql = """
+            SELECT status, COUNT(*) as count
+            FROM car
+            GROUP BY status
+        """;
+
+        return jdbcTemplate.query(sql, rs -> {
+            Map<String, Integer> map = new HashMap<>();
+            while (rs.next()) {
+                map.put(rs.getString("status").toLowerCase(), rs.getInt("count"));
+            }
+            return map;
+        });
+    }
+
+    //--------------------------------------------------------
+
+
+
+    
 }

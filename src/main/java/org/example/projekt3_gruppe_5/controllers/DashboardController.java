@@ -1,13 +1,18 @@
 package org.example.projekt3_gruppe_5.controllers;
 
 
+import java.util.List;
+import java.util.Map;
+
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.services.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 
 @Controller
 public class DashboardController {
@@ -17,11 +22,63 @@ public class DashboardController {
         this.carService = carService;
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        model.addAttribute("cars", carService.getAllCars());
-        return "inventory";
-    }
+// POPUP VINDUET*** TEST TEST ***
+
+// REGISTER CAR og OPRET SKADERAPPORT
+
+@GetMapping("/")
+public String dashboard(
+        @RequestParam(required = false) Boolean showPopup,
+        @RequestParam(required = false) Boolean showDamagePopup,
+        Model model) {
+
+    model.addAttribute("cars", carService.getAllCars());
+
+    model.addAttribute("showPopup",
+            showPopup != null && showPopup);
+
+    model.addAttribute("showDamagePopup",
+            showDamagePopup != null && showDamagePopup);
+
+
+    // NY cirkel diagram car status ****TESTING*****        
+
+    Map<String, Integer> counts = carService.getStatusCounts();
+
+    int ledig = counts.getOrDefault("ledig", 0);
+    int udlejet = counts.getOrDefault("udlejet", 0);
+    int skadet = counts.getOrDefault("skadet", 0);
+
+    // jeg har brugt .getOrDefault for at "int" aldrig bliver retuneret som null fra databasen        
+
+    int total = ledig + udlejet + skadet;
+    if (total == 0) total = 1;
+
+    //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0 på (linje 64)
+
+    model.addAttribute("ledig", ledig);
+    model.addAttribute("udlejet", udlejet);
+    model.addAttribute("skadet", skadet);
+    model.addAttribute("total", total);
+
+    double ledigPct = (ledig * 100.0) / total;
+    double udlejetPct = ((ledig + udlejet) * 100.0) / total;
+
+    model.addAttribute("ledigPct", ledigPct);
+    model.addAttribute("udlejetPct", udlejetPct);
+
+
+
+
+      //----------------------------------------------------------  cirkel diagram slut    
+
+
+    return "inventory";
+
+}
+
+
+    //--------------------------------------------------------
 
     @GetMapping("/carFilter")
     public String showCars(
@@ -37,10 +94,6 @@ public class DashboardController {
 
     //test 2
     //Header links
-    @GetMapping("/register_car")
-    public String registerCar(Model model) {
-        return "register_car";
-    }
 
     @GetMapping("/damage_report")
     public String damageReport(Model model) {
@@ -56,4 +109,36 @@ public class DashboardController {
     public String logout(Model model) {
         return "login";
     }
+
+
+
+    // NY SAVE CAR *** TEST ****
+
+
+    @PostMapping("/saveCar")
+    public String saveCar(@ModelAttribute Car car) {
+
+    carService.saveCar(car);
+
+    return "redirect:/";
+    }
+    //--------------------------------------------------------
+
+    // NY DELETE CAR *** TEST ****
+    @PostMapping("/deleteCar")
+    public String deleteCar(@RequestParam int carId) {
+
+    carService.deleteCar(carId);
+
+    return "redirect:/";
+    }
+    //--------------------------------------------------------
+
+    
+
+
+
+
+
+    
 }
