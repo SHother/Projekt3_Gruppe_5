@@ -28,9 +28,7 @@ public class CarRepository {
     }
 
 
-
     // NY SAVE CAR *** TEST ****
-
     public void insertCar(Car car) {
     String sql = """
         INSERT INTO car (car_id, brand, model, status, price, fuel_type, mileage)
@@ -48,20 +46,15 @@ public class CarRepository {
         );
     }
 
-    //--------------------------------------------------------
 
     // NY DELETE CAR *** TEST ****
-
     public void deleteCar(int carId) {
     String sql = "DELETE FROM car WHERE car_id = ?";
     jdbcTemplate.update(sql, carId);
     }
 
-    //--------------------------------------------------------
-
 
     // NY cirkel diagram car status ****TESTING*****--------------------------------------------------------
-
     public Map<String, Integer> getStatusCounts() {
         String sql = """
             SELECT status, COUNT(*) as count
@@ -77,10 +70,5 @@ public class CarRepository {
             return map;
         });
     }
-
-    //--------------------------------------------------------
-
-
-
     
 }

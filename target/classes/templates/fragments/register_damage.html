@@ -7,36 +7,27 @@
             <h1>Skaderapport</h1>
 
             <form action="/saveDamageReport" method="post">
-
                 
                 <div class="dmg-select-group">
-
                     <label>Vælg Bil</label>
 
-                    <select name="vBil">      <!-- skal ændres så den henter bilerne i databasen *** -->
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                    <select name="vBil">
+                        <option
+                                th:each="car : ${cars}"
+                                th:value="${car.carId}"
+                                th:text="${car.carId}"> <!--Kan ændres til bil mærke/model eller whatever-->
+                        </option>
                     </select>
-
                 </div>
-
 
                 <div class="dmg-rapport-content">
 
-
                     <div class="dmg-left">
-
                         <label>Beskriv Skader</label>
-
                         <textarea name="description" placeholder="Beskrivelse..."></textarea>
-
                     </div>
 
-
                     <div class="dmg-rapport-right">
-
                         <div class="dmg-form-group">
                             <label>Pris</label>
                             <input type="number" name="price">
@@ -47,35 +38,24 @@
 
                             <select name="status">
                                 <option value="Udbedret">Udbedret</option>
-                                <option value="under udbedring">Under udbedring</option>
-                                <option value="ikke indberettet">Ikke indberettet</option>
+                                <option value="Under udbedring">Under udbedring</option>
+                                <option value="Ikke indberettet">Ikke indberettet</option>
                             </select>
 
-
                         </div>
-
-
                     </div>
-
                 </div>
 
-
                 <div class="damage-button-group">
-
-                    <button type="submit" class="Opret-button">
-                        Opret
-                    </button>
+                    <button type="submit" class="save-btn">
+                        Opret </button>
 
                     <a th:href="@{/}" class="cancel-button">
                         Annuller
                     </a>
-
-
                 </div>
 
             </form>
-
         </div>
-
     </div>
 </div>

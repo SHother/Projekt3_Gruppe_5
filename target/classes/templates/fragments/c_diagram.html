@@ -3,36 +3,42 @@
     <div class="side-panel">
 
         <div class="diagram-box">
-            <h3>Lageroversigt</h3>
+            <h3>Lageroversigt i antal biler</h3>
 
             <div class="circle-diagram"
                 th:style="'background: conic-gradient(' +
-                '#4caf50 0% ' + ${ledigPct} + '%, ' +
-                '#ff9800 0% ' + ${udlejetPct} + '%, ' +
+                '#4caf50 0% ' + ${ledigPctCount} + '%, ' +
+                '#ff9800 0% ' + ${udlejetPctCount} + '%, ' +
                 '#f44336 0% 100%)'">
             </div>
 
             <div class="diagram-status-box">
-                <p><span class="status-box-farve ledig"></span> Ledig: <span th:text="${ledig}"></span></p>
-                <p><span class="status-box-farve udlejet"></span> Udlejet: <span th:text="${udlejet}"></span></p>
-                <p><span class="status-box-farve skadet"></span> Skadet: <span th:text="${skadet}"></span></p>
+                <p><span class="status-box-farve ledig"></span> Ledig:<span th:text="${ledigCount}"></span> biler</p>
+                <p><span class="status-box-farve udlejet"></span> Udlejet:<span th:text="${udlejetCount}"></span> biler</p>
+                <p><span class="status-box-farve skadet"></span> Skadet:<span th:text="${skadetCount}"></span> biler</p>
             </div>
 
             
         </div>
 
-        <!-- "søjle diagram" skal evt. slettes*** ----------------------------------------------------------------------------- -->
+        <!-- Cirkel Diagram 2 - Prices i stedet for count ----------------------------------------------------------------------------- -->
 
         <div class="diagram-box">
-            <h3>Graf 2</h3>
+            <h3>Pris for bil status</h3>
 
-            <div class="bar-chart">
-
+            <div class="circle-diagram"
+                 th:style="'background: conic-gradient(' +
+                '#4caf50 0% ' + ${ledigPctPrice} + '%, ' +
+                '#ff9800 0% ' + ${udlejetPctPrice} + '%, ' +
+                '#f44336 0% 100%)'">
             </div>
+
+            <div class="diagram-status-box">
+                <p><span class="status-box-farve ledig"></span> Ledig:<span th:text="${ledigPrice}"></span> kr</p>
+                <p><span class="status-box-farve udlejet"></span> Udlejet:<span th:text="${udlejetPrice}"></span> kr</p>
+                <p><span class="status-box-farve skadet"></span> Skadet:<span th:text="${skadetPrice}"></span> kr</p>
+            </div>
+
         </div>
-
-        <!-- "søjle diagram" skal evt. slettes***^ ----------------------------------------------------------------------------- -->
-
     </div>
-
 </div>

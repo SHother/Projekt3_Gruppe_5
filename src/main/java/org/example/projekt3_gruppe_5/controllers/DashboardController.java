@@ -37,68 +37,68 @@ public class DashboardController {
             @RequestParam(required = false) Boolean showDamagePopup,
             @RequestParam(required = false) Boolean showCustomerPopup,
             @RequestParam(required = false) Boolean showLeasePopup,
+            @RequestParam(required = false) String brand,
+            @RequestParam(required = false) String status,
             Model model) {
 
+        //alle biler til lageroversigt grafer
         model.addAttribute("cars", carService.getAllCars());
 
-        model.addAttribute("showPopup",
-                showPopup != null && showPopup);
+        //Filtrerede biler til listen af biler (kan også være alle biler)
+        model.addAttribute("carsFiltered", carService.filterCars(brand, status));
 
-        model.addAttribute("showDamagePopup",
-                showDamagePopup != null && showDamagePopup);
+        //pop-ups
+        model.addAttribute("showPopup", showPopup != null && showPopup);
+        model.addAttribute("showDamagePopup", showDamagePopup != null && showDamagePopup);
+        model.addAttribute("showCustomerPopup", showCustomerPopup != null && showCustomerPopup);
+        model.addAttribute("showLeasePopup", showLeasePopup != null && showLeasePopup);
 
-        model.addAttribute("showCustomerPopup",
-                showCustomerPopup != null && showCustomerPopup);
-
-        model.addAttribute("showLeasePopup",
-                showLeasePopup != null && showLeasePopup);
-
-
-        List<Customer> customers = leaseService.getAllCustomers();
-        List<Car> availableCars = carService.filterCars(null, "Ledig");
-
-        model.addAttribute("customers", customers);
-        model.addAttribute("availableCars", availableCars);
+        //Data der skal bruges i pop-ups
+        //Burde der var nogen if-statements tilknyttet, så vi ikke skal gøre det hver gang vi trykker på noget?
+        model.addAttribute("customers", leaseService.getAllCustomers());
+        model.addAttribute("availableCars", carService.filterCars(null, "Ledig"));
         model.addAttribute("lease", new Lease());
 
-    // NY cirkel diagram car status ****TESTING*****        
 
+    // NY cirkel diagram car status ****TESTING*****
+    // TODO: skal tildels rykkes til en Service klasse.. måske
     Map<String, Integer> counts = carService.getStatusCounts();
 
-    int ledig = counts.getOrDefault("ledig", 0);
-    int udlejet = counts.getOrDefault("udlejet", 0);
-    int skadet = counts.getOrDefault("skadet", 0);
+    int ledigCount = counts.getOrDefault("ledig", 0);
+    int udlejetCount = counts.getOrDefault("udlejet", 0);
+    int skadetCount = counts.getOrDefault("skadet", 0);
 
-    // jeg har brugt .getOrDefault for at "int" aldrig bliver retuneret som null fra databasen        
+    // Bruger .getOrDefault for at "int" aldrig bliver retuneret som null fra databasen
 
-    int total = ledig + udlejet + skadet;
+    int total = ledigCount + udlejetCount + skadetCount;
     if (total == 0) total = 1;
 
-    //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0 på (linje 64)
+    //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0 på (linje 83)
 
-    model.addAttribute("ledig", ledig);
-    model.addAttribute("udlejet", udlejet);
-    model.addAttribute("skadet", skadet);
+    model.addAttribute("ledigCount", ledigCount);
+    model.addAttribute("udlejetCount", udlejetCount);
+    model.addAttribute("skadetCount", skadetCount);
     model.addAttribute("total", total);
 
-    double ledigPct = (ledig * 100.0) / total;
-    double udlejetPct = ((ledig + udlejet) * 100.0) / total;
+    double ledigPct = (ledigCount * 100.0) / total;
+    double udlejetPct = ((ledigCount + udlejetCount) * 100.0) / total;
 
-    model.addAttribute("ledigPct", ledigPct);
-    model.addAttribute("udlejetPct", udlejetPct);
+    model.addAttribute("ledigPctCount", ledigPct);
+    model.addAttribute("udlejetPctCount", udlejetPct);
 
+    Map<String, Double> prices = carService.getStatusPrices();
 
-
-
-      //----------------------------------------------------------  cirkel diagram slut    
-
+    model.addAttribute("ledigPrice", prices.get("Ledig"));
+    model.addAttribute("udlejetPrice", prices.get("Udlejet"));
+    model.addAttribute("skadetPrice", prices.get("Skadet"));
+    model.addAttribute("totalPrice", prices.get("Total"));
+    model.addAttribute("ledigPctPrice", prices.get("ledigPct"));
+    model.addAttribute("udlejetPctPrice", prices.get("udlejetPct"));
 
     return "inventory";
-
 }
 
 
-    //--------------------------------------------------------
 
     @GetMapping("/carFilter")
     public String showCars(
@@ -106,8 +106,8 @@ public class DashboardController {
             @RequestParam(required = false) String status,
             Model model) {
 
-        List<Car> cars = carService.filterCars(brand, status);
-        model.addAttribute("cars", cars);
+        List<Car> carsFiltered = carService.filterCars(brand, status);
+        model.addAttribute("carsFiltered", carsFiltered);
 
         return "inventory";
     }
@@ -138,15 +138,12 @@ public class DashboardController {
 
 
     // NY SAVE CAR *** TEST ****
-
-
     @PostMapping("/saveCar")
     public String saveCar(@ModelAttribute Car car) {
         //TODO: check input
         carService.saveCar(car);
     return "redirect:/";
     }
-    //--------------------------------------------------------
 
     // NY DELETE CAR *** TEST ****
     @PostMapping("/deleteCar")
@@ -155,13 +152,6 @@ public class DashboardController {
         carService.deleteCar(carId);
     return "redirect:/";
     }
-    //--------------------------------------------------------
-
-    
 
 
-
-
-
-    
 }
