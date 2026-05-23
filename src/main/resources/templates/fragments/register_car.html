@@ -9,11 +9,6 @@
             <form action="/saveCar" method="post">
 
                 <div class="form-group">
-                    <label>Vognnummer</label>
-                    <input type="text" name="carId">
-                </div>
-
-                <div class="form-group">
                     <label>Mærke</label>
                     <input type="text" name="brand">
                 </div>
@@ -49,15 +44,8 @@
                 </div>
 
                 <div class="button-group">
-
-                    <button type="submit" class="save-btn">
-                        Gem Bil
-                    </button>
-
-                    <a th:href="@{/}" class="cancel-btn">
-                        Luk
-                    </a>
-
+                    <button type="submit" class="save-btn">Opret Bil</button>
+                    <a th:href="@{/}" class="cancel-button">Annuller</a>
                 </div>
 
             </form>

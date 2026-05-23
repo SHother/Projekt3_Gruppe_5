@@ -26,7 +26,7 @@
                     <select id="carId" name="carIdAsString">
                         <option value=-1>-</option>
                         <option
-                                th:each="car : ${cars}"
+                                th:each="car : ${availableCars}"
                                 th:value="${car.carId}"
                                 th:text="${car.carId}">
                         </option>
@@ -54,11 +54,10 @@
                 </div>
 
                 <div class="button-group">
-                    <button type="submit">Opret lejeaftale</button>
+                    <button type="submit" class="save-btn">Opret lejeaftale</button>
+                    <a th:href="@{/}" class="cancel-button">Annuller</a>
                 </div>
             </form>
         </div>
-
     </div>
-
 </div>

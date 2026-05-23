@@ -37,10 +37,12 @@ public class CarService {
         return cars;
     }
 
-    // Tager listen af biler og tæller prisen sammen for hver status og total prisen
-    // Giver et Map tilbage med Status og Price
-    // Bruges til at lave cirkel diagrammer
+    
     public Map<String, Double> getStatusPrices(){
+        // Tager listen af biler og tæller prisen sammen for hver status og total prisen
+        // Giver et Map tilbage med Status og Price
+        // Bruges til at lave cirkel diagrammer
+
         List<Car> cars = getAllCars();
         Map<String, Double> countPrices = new HashMap<>();
         countPrices.put("Total", 0.0);

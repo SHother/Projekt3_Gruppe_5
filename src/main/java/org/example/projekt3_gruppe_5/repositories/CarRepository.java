@@ -31,12 +31,11 @@ public class CarRepository {
     // NY SAVE CAR *** TEST ****
     public void insertCar(Car car) {
     String sql = """
-        INSERT INTO car (car_id, brand, model, status, price, fuel_type, mileage)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO car (brand, model, status, price, fuel_type, mileage)
+        VALUES (?, ?, ?, ?, ?, ?)
     """;
 
         jdbcTemplate.update(sql,
-                car.getCarId(),
                 car.getBrand(),
                 car.getModel(),
                 car.getStatus(),

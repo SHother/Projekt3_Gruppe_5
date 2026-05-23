@@ -60,42 +60,43 @@ public class DashboardController {
         model.addAttribute("lease", new Lease());
 
 
-    // NY cirkel diagram car status ****TESTING*****
-    // TODO: skal tildels rykkes til en Service klasse.. måske
-    Map<String, Integer> counts = carService.getStatusCounts();
+        // NY cirkel diagram car status ****TESTING*****
+        // TODO: skal tildels rykkes til en Service klasse.. måske
+        Map<String, Integer> counts = carService.getStatusCounts();
 
-    int ledigCount = counts.getOrDefault("ledig", 0);
-    int udlejetCount = counts.getOrDefault("udlejet", 0);
-    int skadetCount = counts.getOrDefault("skadet", 0);
+        int ledigCount = counts.getOrDefault("ledig", 0);
+        int udlejetCount = counts.getOrDefault("udlejet", 0);
+        int skadetCount = counts.getOrDefault("skadet", 0);
 
-    // Bruger .getOrDefault for at "int" aldrig bliver retuneret som null fra databasen
+        // Bruger .getOrDefault for at "int" aldrig bliver retuneret som null fra databasen
 
-    int total = ledigCount + udlejetCount + skadetCount;
-    if (total == 0) total = 1;
+        int total = ledigCount + udlejetCount + skadetCount;
+        if (total == 0) total = 1;
 
-    //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0 på (linje 83)
+        //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0 på (linje 83)
 
-    model.addAttribute("ledigCount", ledigCount);
-    model.addAttribute("udlejetCount", udlejetCount);
-    model.addAttribute("skadetCount", skadetCount);
-    model.addAttribute("total", total);
+        model.addAttribute("ledigCount", ledigCount);
+        model.addAttribute("udlejetCount", udlejetCount);
+        model.addAttribute("skadetCount", skadetCount);
+        model.addAttribute("total", total);
 
-    double ledigPct = (ledigCount * 100.0) / total;
-    double udlejetPct = ((ledigCount + udlejetCount) * 100.0) / total;
+        double ledigPct = (ledigCount * 100.0) / total;
+        double udlejetPct = ((ledigCount + udlejetCount) * 100.0) / total;
 
-    model.addAttribute("ledigPctCount", ledigPct);
-    model.addAttribute("udlejetPctCount", udlejetPct);
+        model.addAttribute("ledigPctCount", ledigPct);
+        model.addAttribute("udlejetPctCount", udlejetPct);
 
-    Map<String, Double> prices = carService.getStatusPrices();
+        // Graf 2
+        Map<String, Double> prices = carService.getStatusPrices();
 
-    model.addAttribute("ledigPrice", prices.get("Ledig"));
-    model.addAttribute("udlejetPrice", prices.get("Udlejet"));
-    model.addAttribute("skadetPrice", prices.get("Skadet"));
-    model.addAttribute("totalPrice", prices.get("Total"));
-    model.addAttribute("ledigPctPrice", prices.get("ledigPct"));
-    model.addAttribute("udlejetPctPrice", prices.get("udlejetPct"));
+        model.addAttribute("ledigPrice", prices.get("Ledig"));
+        model.addAttribute("udlejetPrice", prices.get("Udlejet"));
+        model.addAttribute("skadetPrice", prices.get("Skadet"));
+        model.addAttribute("totalPrice", prices.get("Total"));
+        model.addAttribute("ledigPctPrice", prices.get("ledigPct"));
+        model.addAttribute("udlejetPctPrice", prices.get("udlejetPct"));
 
-    return "inventory";
+        return "inventory";
 }
 
 
