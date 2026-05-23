@@ -113,7 +113,7 @@ public class DashboardController {
     }
 
     //test 2
-    //Header links
+    //Header links 
 
     @GetMapping("/damage_report")
     public String damageReport(Model model) {
