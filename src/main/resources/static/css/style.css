@@ -103,7 +103,7 @@ tbody tr:hover{
     background:#f5f5f5;
 }
 
-/* Tabel buttons------------------------------------ #69c3d8 */
+/* Tabel buttons------------------------------------ */
 
 .action-buttons{
     display:flex;
@@ -119,13 +119,16 @@ tbody tr:hover{
 }
 
 .edit-button:hover,.report-button:hover{
-    background:rgba(105,195,216,1);
+    background:#777;
 }
 
 
 .delete-button{
     background:#ff2d6f;
-    color:white;
+}
+
+.delete-button:hover{
+    background:#9e1d46;
 }
 
 .action-buttons button,
@@ -143,7 +146,7 @@ tbody tr:hover{
     display:inline-block;
 }
 
-
+/* Dashboard layout---------------------------------------- */
 /* Main kasse---------------------------------------- */
 
 .dashboard-container{
@@ -154,8 +157,6 @@ tbody tr:hover{
     padding:30px;
 }
 
-
-
 /* Kasse højreside------------------------------------ */
 
 .Car-overview{
@@ -165,7 +166,6 @@ tbody tr:hover{
 
     box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
-
 
 /* Kasser venstreside------------------------------------ */
 
@@ -243,24 +243,6 @@ tbody tr:hover{
     background-color: #f44336;
 }
 
-
-
-
-
-/* Søjlediagram-------------------------------------- */
-
-.bar-chart{
-    height:200px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    border:2px dashed #bbb;
-}
-
-
-
 /* Registrer ny bil popup-------------------------------------- */
 
 .popup-overlay{
@@ -280,7 +262,6 @@ tbody tr:hover{
     z-index:9999;
 }
 
-
 .popup-container{
     width:650px;
 
@@ -298,7 +279,6 @@ tbody tr:hover{
     margin-bottom:35px;
     color:#000;
 }
-
 
 .form-group{
     display:grid;
@@ -324,7 +304,7 @@ tbody tr:hover{
     font-size:16px;
 }
 
-/* Popup buttons------------------------------------ */
+/* Popup buttons -nyBil-skaderapport-nyKunde-nyLejeaftale------------------------------------ */
 
 .button-group{
     display:flex;
@@ -335,7 +315,7 @@ tbody tr:hover{
 }
 
 .save-btn{
-    background:#45275a;
+    background:#999;
     color:white;
 
     border:none;
@@ -350,7 +330,7 @@ tbody tr:hover{
 }
 
 .save-btn:hover{
-    background:#5d3578;
+    background:#777;
 }
 
 .cancel-btn{
@@ -367,8 +347,6 @@ tbody tr:hover{
 .cancel-btn:hover{
     background:#777;
 }
-
-
 
 /* Skaderapport popup ------------------------------------- */
 
@@ -419,6 +397,7 @@ tbody tr:hover{
 }
 
 /* Venstre side popup vinduet---------------------------------------- */
+
 .dmg-left{
     flex:1;
 }
@@ -456,77 +435,6 @@ tbody tr:hover{
     justify-content:flex-start;
     align-items:center;
 }
-
-.price-btn,.status-btn{
-    width:120px;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:white;
-
-    cursor:pointer;
-
-    font-size:16px;
-    font-weight:bold;
-
-    box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
-
-.price-btn:hover,.status-btn:hover{
-    background:#efefef;
-}
-
-/* Buttons i bunden af popupvinduet---------------------------------------- */
-
-/* Button navne skal evt. laves om. registrer bil buttons hedder btn og skaderapport buttons */
-
-.damage-button-group{
-    display:flex;
-    justify-content:flex-end;
-    gap:12px;
-
-    margin-top:25px;
-}
-
-.Opret-button{
-    background:#999;
-    border:none;
-
-    padding:10px 20px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-}
-
-.Opret-button:hover{
-    background:rgba(105,195,216,1);
-}
-
-.cancel-button{
-    background:#999;
-    color:white;
-
-    padding:14px 28px;
-
-    border-radius:10px;
-
-    text-decoration:none;
-}
-
-.cancel-button:hover{
-    background:#777;
-}
-
-
-
-
-
-/* gutter vi skal lige have set på vores css. deles evt. op i flere filer vi er på +500 linjer nu */
 
 
 
