@@ -5,6 +5,7 @@ import org.example.projekt3_gruppe_5.repositories.CustomerRepository;
 import org.example.projekt3_gruppe_5.repositories.LeaseRepository;
 import org.springframework.stereotype.Service;
 import org.example.projekt3_gruppe_5.models.Lease;
+import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,22 +26,25 @@ public class LeaseService {
         //Søren
 
         if (customerId <= 0) {
-            throw new IllegalArgumentException("Kundenavn er obligatorisk");
+            throw new BadRequestException("Kundenavn er obligatorisk");
         }
         if (carId <= 0) {
-            throw new IllegalArgumentException("Vognnummer er obligatorisk");
+            throw new BadRequestException("Vognnummer er obligatorisk");
         }
         if (pickupDate == null) {
-            throw new IllegalArgumentException("Afhentningsdato er obligatorisk");
+            throw new BadRequestException("Afhentningsdato er obligatorisk");
         }
         if (turnInDate == null) {
-            throw new IllegalArgumentException("Afleveringsdato er obligatorisk");
+            throw new BadRequestException("Afleveringsdato er obligatorisk");
+        }
+        if (pickupDate.isAfter(turnInDate)) {
+            throw new BadRequestException("Afhentningsdato kan ikke være efter Afleveringsdato");
         }
         if (pickUpLocation == null) {
-            throw new IllegalArgumentException("Afhentningslokation er obligatorisk");
+            throw new BadRequestException("Afhentningslokation er obligatorisk");
         }
         if (turnInLocation == null) {
-            throw new IllegalArgumentException("Afleveringslokation er obligatorisk");
+            throw new BadRequestException("Afleveringslokation er obligatorisk");
         }
 
         //TODO: Check om bilen allerede er udlejet i den valgte periode

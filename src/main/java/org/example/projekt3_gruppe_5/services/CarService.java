@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.example.projekt3_gruppe_5.exceptions.ResourceNotFoundException;
+import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.repositories.CarRepository;
 import org.springframework.stereotype.Service;
@@ -77,22 +79,70 @@ public class CarService {
         return carRepository.allCars();
     }
 
+    /*
     public void updateStatus(int carId, String status) {
         carRepository.updateCarStatus(carId, status);
     }
+*/
+    public void updateStatus(int carId, String status) {
+        if (status == null || status.isEmpty()) {
+            throw new BadRequestException("Status cannot be empty");
+        }
 
+        List<Car> cars = getAllCars();
+        boolean carExists = cars.stream().anyMatch(c -> c.getCarId() == carId);
 
+        if (!carExists) {
+            throw new ResourceNotFoundException("Car with ID " + carId + " not found");
+        }
+
+        carRepository.updateCarStatus(carId, status);
+    }
+/*
     // NY SAVE CAR *** TEST ****
     public void saveCar(Car car) {
     carRepository.insertCar(car);
     }
+*/
+public void saveCar(Car car) {
+    if (car == null) {
+        throw new BadRequestException("Car object cannot be null");
+    }
 
+    if (car.getBrand() == null || car.getBrand().isEmpty()) {
+        throw new BadRequestException("Car brand is required");
+    }
 
-    // NY DELETE CAR *** TEST ****
+    if (car.getModel() == null || car.getModel().isEmpty()) {
+        throw new BadRequestException("Car model is required");
+    }
+
+    if (car.getPrice() <= 0) {
+        throw new BadRequestException("Car price must be greater than 0");
+    }
+
+    carRepository.insertCar(car);
+}
+
+ /*   // NY DELETE CAR *** TEST ****
     public void deleteCar(int carId) {
     carRepository.deleteCar(carId);
     }
+*/
+ public void deleteCar(int carId) {
+     if (carId <= 0) {
+         throw new BadRequestException("Car ID must be a positive number");
+     }
 
+     List<Car> cars = getAllCars();
+     boolean carExists = cars.stream().anyMatch(c -> c.getCarId() == carId);
+
+     if (!carExists) {
+         throw new ResourceNotFoundException("Car with ID " + carId + " not found");
+     }
+
+     carRepository.deleteCar(carId);
+ }
 
     // NY cirkel diagram car status ****TESTING*****
     public Map<String, Integer> getStatusCounts() {
