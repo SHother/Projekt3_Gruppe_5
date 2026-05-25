@@ -1,3 +1,31 @@
+/* 
+
+        - INDEX - 
+
+    1 - Navigations bar
+
+    2 - Dashboard layout 
+    2.1 - Main kasse
+    2.2 - Kasse højreside
+    2.3 - Kasser venstreside
+    2.4 - Cirkeldiagram
+    2.5 - Cirkeldiagram (status box)
+
+    3 - Søgefilter
+
+    4 - Bil Tabel
+    4.1 - Tabel buttons
+
+    5 - Registrer ny bil popup vindue
+
+    6 - Skaderapport popup vindue
+    6.1 - Venstre side popup vinduet
+    6.2 - højre side popup vinduet
+
+    7 - Popup buttons -nyBil-skaderapport-nyKunde-nyLejeaftale 
+
+*/
+
 
 *{
     margin:0;
@@ -11,7 +39,7 @@ body{
     padding-top:100px;
 }
 
-/* Navigation------------------------------------------- */
+/* 1 - Navigations bar------------------------------------------------------------ */
 
 header nav ul{
     list-style:none;
@@ -46,9 +74,104 @@ header nav ul li a:hover{
     margin-left:auto;
 }
 
+/* 2 - Dashboard layout--------------------------------------------------------- */
+/* 2.1 - Main kasse-------------------------------------------- */
 
+.dashboard-container{
+    display:grid;
+    grid-template-columns: 3fr 1fr;
+    gap:30px;
 
-/* Sægefilter------------------------------------------- */
+    padding:30px;
+}
+
+/* 2.2 - Kasse højreside--------------------------------------- */
+
+.Car-overview{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* 2.3 - Kasser venstreside------------------------------------ */
+
+.side-panel{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.diagram-box{
+    background:white;
+    padding:20px;
+
+    border-radius:12px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+
+    min-height:300px;
+}
+
+.diagram-box h3{
+    margin-bottom:20px;
+}
+
+/* 2.4 - Cirkeldiagram--------------------------------------------------------- */
+
+.circle-diagram{
+    width:220px;
+    height:220px;
+
+    background:#69c3d8;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:auto;
+}
+
+/* 2.5 - Cirkeldiagram (status box)------------------------------ */
+
+.diagram-status-box {
+    margin-top: 15px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.diagram-status-box p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.status-box-farve {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.status-box-farve.ledig {
+    background-color: #4caf50;
+}
+
+.status-box-farve.udlejet {
+    background-color: #ff9800;
+}
+
+.status-box-farve.skadet {
+    background-color: #f44336;
+}
+
+/* 3 - Søgefilter----------------------------------------------------------- */
 
 .filter-box{
     display:flex;
@@ -78,7 +201,7 @@ header nav ul li a:hover{
     background:#acabab;
 }
 
-/* Bil Tabel--------------------------------------------- */
+/* 4 - Bil Tabel------------------------------------------------------------ */
 
 table{
     width:100%;
@@ -103,7 +226,7 @@ tbody tr:hover{
     background:#f5f5f5;
 }
 
-/* Tabel buttons------------------------------------ */
+/* 4.1 - Tabel buttons------------------------------------ */
 
 .action-buttons{
     display:flex;
@@ -146,104 +269,9 @@ tbody tr:hover{
     display:inline-block;
 }
 
-/* Dashboard layout---------------------------------------- */
-/* Main kasse---------------------------------------- */
 
-.dashboard-container{
-    display:grid;
-    grid-template-columns: 3fr 1fr;
-    gap:30px;
 
-    padding:30px;
-}
-
-/* Kasse højreside------------------------------------ */
-
-.Car-overview{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-/* Kasser venstreside------------------------------------ */
-
-.side-panel{
-    display:flex;
-    flex-direction:column;
-    gap:25px;
-}
-
-.diagram-box{
-    background:white;
-    padding:20px;
-
-    border-radius:12px;
-
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-
-    min-height:300px;
-}
-
-.diagram-box h3{
-    margin-bottom:20px;
-}
-
-/* Cirkeldiagram----------------------------------- */
-
-.circle-diagram{
-    width:220px;
-    height:220px;
-
-    background:#69c3d8;
-
-    border-radius:50%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    margin:auto;
-}
-
-/* Cirkeldiagram (status box)----------------------------------- */
-
-.diagram-status-box {
-    margin-top: 15px;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.diagram-status-box p {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-}
-
-.status-box-farve {
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    border-radius: 3px;
-}
-
-.status-box-farve.ledig {
-    background-color: #4caf50;
-}
-
-.status-box-farve.udlejet {
-    background-color: #ff9800;
-}
-
-.status-box-farve.skadet {
-    background-color: #f44336;
-}
-
-/* Registrer ny bil popup-------------------------------------- */
+/* 5 - Registrer ny bil popup vindue----------------------------------------------------------------- */
 
 .popup-overlay{
     position:fixed;
@@ -304,7 +332,96 @@ tbody tr:hover{
     font-size:16px;
 }
 
-/* Popup buttons -nyBil-skaderapport-nyKunde-nyLejeaftale------------------------------------ */
+
+
+/* 6 - Skaderapport popup vindue ------------------------------------------------------------------- */
+
+.dmg-popup-container{
+    width:700px;
+
+    background:#dcdcdc;
+
+    padding:35px;
+
+    border-radius:40px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.dmg-popup-container h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.dmg-select-group{
+    margin-bottom:25px;
+}
+
+.dmg-select-group label{
+    display:block;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.dmg-select-group select{
+    width:100%;
+    padding:12px;
+
+    font-size:18px;
+
+    border:1px solid #888;
+    border-radius:6px;
+
+    background:white;
+}
+
+.dmg-rapport-content{
+    display:flex;
+    gap:25px;
+}
+
+/* 6.1 - Venstre side popup vinduet---------------------------------------- */
+
+.dmg-left{
+    flex:1;
+}
+
+.dmg-left label{
+    display:block;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.dmg-left textarea{
+    width:100%;
+    height:220px;
+
+    resize:none;
+
+    padding:15px;
+
+    border:1px solid #999;
+    border-radius:6px;
+
+    font-size:16px;
+}
+
+/* 6.2 - højre side popup vinduet---------------------------------------- */
+.dmg-rapport-right{
+    width:150px;
+
+    margin-top:45px;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+
+    justify-content:flex-start;
+    align-items:center;
+}
+
+/* 7 - Popup buttons -nyBil-skaderapport-nyKunde-nyLejeaftale------------------------------------------------- */
 
 .button-group{
     display:flex;
@@ -347,96 +464,6 @@ tbody tr:hover{
 .cancel-btn:hover{
     background:#777;
 }
-
-/* Skaderapport popup ------------------------------------- */
-
-.dmg-popup-container{
-    width:700px;
-
-    background:#dcdcdc;
-
-    padding:35px;
-
-    border-radius:40px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-.dmg-popup-container h1{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-/* vælg bil------------------------------------------------- */
-.dmg-select-group{
-    margin-bottom:25px;
-}
-
-.dmg-select-group label{
-    display:block;
-    font-size:22px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.dmg-select-group select{
-    width:100%;
-    padding:12px;
-
-    font-size:18px;
-
-    border:1px solid #888;
-    border-radius:6px;
-
-    background:white;
-}
-
-.dmg-rapport-content{
-    display:flex;
-    gap:25px;
-}
-
-/* Venstre side popup vinduet---------------------------------------- */
-
-.dmg-left{
-    flex:1;
-}
-
-.dmg-left label{
-    display:block;
-    font-size:22px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.dmg-left textarea{
-    width:100%;
-    height:220px;
-
-    resize:none;
-
-    padding:15px;
-
-    border:1px solid #999;
-    border-radius:6px;
-
-    font-size:16px;
-}
-
-/* højre side popup vinduet---------------------------------------- */
-.dmg-rapport-right{
-    width:150px;
-
-    margin-top:45px;
-    display:flex;
-    flex-direction:column;
-    gap:25px;
-
-    justify-content:flex-start;
-    align-items:center;
-}
-
-
 
 
 
