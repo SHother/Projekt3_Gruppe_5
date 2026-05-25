@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+//Skrevet af Gustav
 @Repository
 public class CustomerRepository{
 

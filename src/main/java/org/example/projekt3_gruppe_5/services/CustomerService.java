@@ -4,7 +4,7 @@ import org.example.projekt3_gruppe_5.models.Customer;
 import org.example.projekt3_gruppe_5.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
-
+//Skrevet af Gustav
 @Service
 public class CustomerService {
 

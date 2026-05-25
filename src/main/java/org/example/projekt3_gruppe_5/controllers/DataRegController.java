@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 
-
+//Skrevet af Gustav
 @Controller
 public class DataRegController {
 
