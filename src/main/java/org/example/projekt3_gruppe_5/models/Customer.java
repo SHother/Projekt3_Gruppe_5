@@ -1,5 +1,5 @@
 package org.example.projekt3_gruppe_5.models;
-
+//Skrevet af Gustav
 public class Customer {
     private int customerId;
     private String customerName;
@@ -8,6 +8,7 @@ public class Customer {
     private String zipCode;
     private String email;
     private String phone;
+
 
     public Customer() {}
 
