@@ -7,6 +7,7 @@ import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
 //Skrevet af Gustav
 @Service
 public class CustomerService {
+//Gustav
 
     private final CustomerRepository customerRepository;
 

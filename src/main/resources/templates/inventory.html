@@ -7,6 +7,12 @@
 </head>
 
 <body>
+<!--
+Dette er vores main page på hjemmesiden og den eneste side
+Thymeleaf samler de forskellige HTML fragment filer og genererer en samlet HTML fil, som bliver sendt til browseren
+Ved at bruge nogle simple if statements kan vi vælge at loade andre fragments ind over hovedsiden.
+If statements bliver kontrolleret i controller klasserne
+-->
 
 <div th:replace="fragments/header :: navbar"></div>
 
@@ -25,11 +31,9 @@
 
 
 <!-- Registrer ny bil popup----------------------------------------------------------------------------- -->
-
 <div th:replace="fragments/register_car :: registerCarPopup"></div>
 
 <!-- Skaderapport popup ------------------------------------------------ -->
-
 <div th:replace="fragments/register_damage :: damagePopup"></div>
 
 <!-- CreateCustomer popup ------------------------------------------------ -->

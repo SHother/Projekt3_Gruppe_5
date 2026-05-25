@@ -99,8 +99,8 @@ public class DashboardController {
         return "inventory";
 }
 
-
-
+    // Tager mærke og status fra filter formen og videregiver til Service klassen
+    // Får
     @GetMapping("/carFilter")
     public String showCars(
             @RequestParam(required = false) String brand,
@@ -113,32 +113,8 @@ public class DashboardController {
         return "inventory";
     }
 
-    //test 2
-    //Header links 
 
-    @GetMapping("/damage_report")
-    public String damageReport(Model model) {
-        return "damage_report";
-    }
-
-    @GetMapping("/register_lease")
-    public String createLeaseForm() {
-        return "redirect:/?showLeasePopup=true";
-    }
-
-    @GetMapping("/register_customer")
-    public String registerCustomer(Model model) {
-        return "register_customer";
-    }
-
-    @GetMapping("/logout")
-    public String logout(Model model) {
-        return "login";
-    }
-
-
-
-    // NY SAVE CAR *** TEST ****
+    // @ModelAttribute mapper automatisk form-input fra HTML felter til et Car objekt
     @PostMapping("/saveCar")
     public String saveCar(@ModelAttribute Car car) {
         //TODO: check input
@@ -146,10 +122,8 @@ public class DashboardController {
         return "redirect:/";
     }
 
-    // NY DELETE CAR *** TEST ****
     @PostMapping("/deleteCar")
     public String deleteCar(@RequestParam int carId) {
-
         carService.deleteCar(carId);
         return "redirect:/";
     }
