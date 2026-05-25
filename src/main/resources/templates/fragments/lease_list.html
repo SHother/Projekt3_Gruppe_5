@@ -1,0 +1,56 @@
+<div th:fragment="Lease-overview">
+    <!-- Søren --->
+        <div class="Car-overview">
+
+
+            <form method="get" action="/" class="filter-box">
+
+                <input type="number"
+                       name="carId"
+                       placeholder="Vognnummer">
+
+                <button type="submit">Filter</button>
+            </form>
+
+
+        <table>
+            <thead>
+            <tr>
+                <th>Lejeaftale nr</th>
+                <th>Bil</th>
+                <th>Kunde</th>
+                <th>Startdato</th>
+                <th>Slutdato</th>
+                <th>Opsamlings sted</th>
+                <th>Afleverings sted</th>
+                <th>Handlinger</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="lease : ${leasesFiltered}">
+                <td th:text="${lease.leaseId}"></td>
+                <td th:text="${lease.carId}"></td>
+                <td th:text="${lease.customerId}"></td>
+                <td th:text="${lease.pickupDate}"></td>
+                <td th:text="${lease.turnInDate}"></td>
+                <td th:text="${lease.pickupLocation}"></td>
+                <td th:text="${lease.turnInLocation}"></td>
+
+                <td class="action-buttons">
+                    <button class="edit-button">Rediger</button>
+                    <button class="report-button">Skaderapport</button>
+
+
+                    <form th:action="@{/deleteLease}" method="post" style="display:inline;">
+                        <input type="hidden" name="leaseId" th:value="${lease.leaseId}">
+                        <button type="submit" class="delete-button">Slet</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

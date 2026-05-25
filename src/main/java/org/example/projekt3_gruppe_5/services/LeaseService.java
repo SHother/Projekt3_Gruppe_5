@@ -10,6 +10,8 @@ import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
 import java.time.LocalDate;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 @Service
 public class LeaseService {
 
@@ -62,6 +64,23 @@ public class LeaseService {
 
     public List<Customer> getAllCustomers() {
         return customerRepository.allCustomer();
+    }
+
+    public List<Lease> filterLeases(String carId) {
+        List<Lease> leases = getAllLeases();
+
+        if (carId != null && !carId.isEmpty()) {
+            int carIdint = parseInt(carId);
+            leases = leases.stream()
+            .filter(c -> c.getCarId() == carIdint)
+            .toList();
+        }
+
+        return leases;
+    }
+
+    private List<Lease> getAllLeases() {
+        return leaseRepository.findAll();
     }
 }
 

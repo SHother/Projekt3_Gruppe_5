@@ -28,7 +28,7 @@
                         <option
                                 th:each="car : ${availableCars}"
                                 th:value="${car.carId}"
-                                th:text="${car.carId}">
+                                th:text="'Vogn ' +${car.carId}+': ' +${car.brand}+ ' ' +${car.model}">
                         </option>
                     </select>
                 </div>

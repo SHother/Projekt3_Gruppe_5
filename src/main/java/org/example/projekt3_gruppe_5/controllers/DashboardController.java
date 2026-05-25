@@ -39,6 +39,7 @@ public class DashboardController {
             @RequestParam(required = false) Boolean showLeasePopup,
             @RequestParam(required = false) String brand,
             @RequestParam(required = false) String status,
+            @RequestParam(required = false) String carId,
             Model model) {
 
         //alle biler til lageroversigt grafer
@@ -46,6 +47,8 @@ public class DashboardController {
 
         //Filtrerede biler til listen af biler (kan også være alle biler)
         model.addAttribute("carsFiltered", carService.filterCars(brand, status));
+
+        model.addAttribute("leasesFiltered", leaseService.filterLeases(carId));
 
         //pop-ups
         model.addAttribute("showPopup", showPopup != null && showPopup);

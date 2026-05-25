@@ -2,8 +2,11 @@ package org.example.projekt3_gruppe_5.repositories;
 
 import org.example.projekt3_gruppe_5.models.Lease;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class LeaseRepository{
@@ -27,6 +30,11 @@ public class LeaseRepository{
                 lease.getPickupLocation(),
                 lease.getTurnInLocation()
         );
+    }
+
+    public List<Lease> findAll() {
+        String sql = "SELECT * FROM lease";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Lease.class));
     }
 }
 
