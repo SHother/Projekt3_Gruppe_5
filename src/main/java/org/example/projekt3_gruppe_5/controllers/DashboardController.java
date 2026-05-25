@@ -143,7 +143,7 @@ public class DashboardController {
     public String saveCar(@ModelAttribute Car car) {
         //TODO: check input
         carService.saveCar(car);
-    return "redirect:/";
+        return "redirect:/";
     }
 
     // NY DELETE CAR *** TEST ****
@@ -151,7 +151,7 @@ public class DashboardController {
     public String deleteCar(@RequestParam int carId) {
 
         carService.deleteCar(carId);
-    return "redirect:/";
+        return "redirect:/";
     }
 
 

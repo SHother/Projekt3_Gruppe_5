@@ -12,10 +12,23 @@ INSERT INTO car (brand, model, status, price, fuel_type, mileage) VALUES
 
 INSERT INTO customer (customer_name, address, city, zip_code, email, phone) VALUES
 ('Jens Hansen', 'Stolvej 46B', 'Vordingborg', '4760', 'Jens@yahoo.com', '+4512345678'),
-('Mette Frederiksen', 'Skoegevej 15', 'København NV', '2400', 'Mette@gmail.dk', '66666666');
+('Mette Frederiksen', 'Skoegevej 15', 'København NV', '2400', 'Mette@gmail.dk', '66666666'),
+('Lars Nielsen', 'Elmuevej 12', 'Aarhus', '8000', 'lars.nielsen@gmail.com', '+4522334455'),
+('Anne Sørensen', 'Birkevej 8', 'Odense', '5000', 'anne.sorensen@hotmail.com', '44556677'),
+('Thomas Jensen', 'Granvej 21', 'Aalborg', '9000', 'thomas.jensen@gmail.com', '+4599887766');
 
 INSERT INTO lease (car_id, customer_id, pickup_date, turn_in_date, pickup_location, turn_in_location) VALUES
-(1, 1, '2024-05-01', '2024-10-01', 'Bilabonnement HQ', 'FDM Sjælland');
+(1, 1, '2024-05-01', '2024-10-01', 'Bilabonnement HQ', 'FDM Sjælland'),
+(2, 1, '2024-06-01', '2024-07-01', 'København', 'Aarhus'),
+(3, 2, '2024-03-10', '2024-04-10', 'Odense', 'København'),
+(3, 1, '2024-08-01', '2024-09-01', 'Aarhus', 'Odense');
 
-INSERT INTO damage (lease_id, title, description, price, status) VALUES
-(1, 'Ridset fæl', 'Højre forhjul har ramt en kantsten', 1500, 'Skadet');
+INSERT INTO damage (lease_id, description, price, status) VALUES
+(1, 'Ridset fælg højre forhjul', 1500, 'Skadet'),
+(2, 'Stenslag i forrude', 2200, 'Skadet'),
+(2, 'Mindre bule i dør', 1800, 'Skadet'),
+(3, 'Ridser bagkofanger', 1200, 'Skadet'),
+(4, 'Ødelagt sidespejl', 2500, 'Skadet'),
+(4, 'Indvendig plet på sæde', 800, 'Skadet'),
+(1, 'Dyb ridse på dør', 3000, 'Skadet'),
+(3, 'Lakskade motorhjelm', 2700, 'Skadet');

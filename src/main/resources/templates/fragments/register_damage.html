@@ -11,11 +11,11 @@
                 <div class="dmg-select-group">
                     <label>Vælg Bil</label>
 
-                    <select name="vBil">
+                    <select name="carId">
                         <option
                                 th:each="car : ${cars}"
                                 th:value="${car.carId}"
-                                th:text="${car.carId}"> <!--Kan ændres til bil mærke/model eller whatever-->
+                                th:text="'Vogn ' +${car.carId}+': ' +${car.brand}+ ' ' +${car.model}"> <!--Kan ændres til bil mærke/model eller whatever-->
                         </option>
                     </select>
                 </div>

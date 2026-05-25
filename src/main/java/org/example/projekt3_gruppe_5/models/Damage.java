@@ -2,6 +2,7 @@ package org.example.projekt3_gruppe_5.models;
 
 public class Damage {
     private int damageId;
+    private int carId;
     private int leaseId;
     private String title;
     private String description;
@@ -9,8 +10,9 @@ public class Damage {
     private String status;
 
     public Damage() {}
-    public Damage(int damageId, int leaseId, String title, String description, int price, String status) {
+    public Damage(int damageId, int carId, int leaseId, String title, String description, int price, String status) {
         this.damageId = damageId;
+        this.carId = carId;
         this.leaseId = leaseId;
         this.title = title;
         this.description = description;
@@ -22,6 +24,7 @@ public class Damage {
     public int getDamageId() {
         return damageId;
     }
+    public int getCarId() {return carId;}
     public int getLeaseId() {
         return leaseId;
     }
@@ -42,6 +45,7 @@ public class Damage {
     public void setDamageId(int damageId) {
         this.damageId = damageId;
     }
+    public void setCarId(int carId) {this.carId = carId;}
     public void setLeaseId(int leaseId) {
         this.leaseId = leaseId;
     }

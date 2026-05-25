@@ -27,8 +27,6 @@ public class CarRepository {
         jdbcTemplate.update(sql, status, carId);
     }
 
-
-    // NY SAVE CAR *** TEST ****
     public void insertCar(Car car) {
     String sql = """
         INSERT INTO car (brand, model, status, price, fuel_type, mileage)
@@ -46,7 +44,7 @@ public class CarRepository {
     }
 
 
-    // NY DELETE CAR *** TEST ****
+    // Checker ikke om bilen har en foreign key et andet sted, så chaser, hvis bil er i en lease i databasen
     public void deleteCar(int carId) {
     String sql = "DELETE FROM car WHERE car_id = ?";
     jdbcTemplate.update(sql, carId);
