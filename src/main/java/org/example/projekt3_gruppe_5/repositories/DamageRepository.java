@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 // Repository håndterer direkte kommunikation med databasen via SQL queries.
+// Søren
 @Repository
 public class DamageRepository {
     //Søren

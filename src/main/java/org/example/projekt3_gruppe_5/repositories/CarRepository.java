@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 
 // Repository håndterer databaseoperationer relateret til biler.
+// Malik
 @Repository
 public class CarRepository {
     private final JdbcTemplate jdbcTemplate;

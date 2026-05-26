@@ -29,6 +29,7 @@ public class DataRegController {
     // Modtager data fra lease popup vinduet fra frontend og opretter en ny leasingaftale.
     @PostMapping("/register_lease")
     public String submit(
+            //Gustav & Søren
             @RequestParam(required = false, defaultValue = "0") String customerIdAsString,
             @RequestParam(required = false, defaultValue = "0") String carIdAsString,
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate pickUpDate,   // Konverterer automatisk dato fra HTML-format til LocalDate objekt.
@@ -38,7 +39,6 @@ public class DataRegController {
             Model model
     ) {
 
-        //TODO: find en anden løsning end casting?
         int customerId = Integer.parseInt(customerIdAsString);  // Konverterer String-værdier fra formularen til integers.
         int carId = Integer.parseInt(carIdAsString);
 

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 // Repository håndterer databaseoperationer relateret til leasingaftaler.
+// Micki
 @Repository
 public class LeaseRepository{
 

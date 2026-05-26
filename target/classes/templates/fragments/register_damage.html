@@ -1,6 +1,6 @@
-<div th:fragment="damagePopup">
+<div th:fragment="damagePopup"> <!-- Thymeleaf fragment som indeholder popup til oprettelse af skadesrapport -->
 
-    <div th:if="${showDamagePopup}" class="popup-overlay">
+    <div th:if="${showDamagePopup}" class="popup-overlay">  <!-- Popup vises kun hvis showDamagePopup=true sendes fra controlleren -->
 
         <div class="dmg-popup-container">
 
@@ -11,9 +11,9 @@
                 <div class="dmg-select-group">
                     <label>Vælg Bil</label>
 
-                    <select name="carId">
+                    <select name="carId">   <!-- (th:each) Thymeleaf loop genererer en option for hver bil hentet fra backend -->
                         <option
-                                th:each="car : ${cars}"
+                                th:each="car : ${cars}" 
                                 th:value="${car.carId}"
                                 th:text="'Vogn ' +${car.carId}+': ' +${car.brand}+ ' ' +${car.model}"> <!--Kan ændres til bil mærke/model eller whatever-->
                         </option>

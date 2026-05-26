@@ -1,16 +1,17 @@
-<div th:fragment="Car-overview">       
+<div th:fragment="Car-overview">       <!-- Thymeleaf fragment som viser oversigt over biler -->
 
-    <div class="Car-overview">
+    <div class="Car-overview">  <!-- Container for biloversigt og filtreringsfunktion -->
 
 
-        <form method="get" action="/" class="filter-box">
-
+        <form method="get" action="/" class="filter-box">   
+            <!-- Formular til filtrering af biler baseret på mærke og status -->
+             <!-- Sender filtervalg til backend via GET request -->
             <input type="text"
                    name="brand"
                    placeholder="Mærke">
 
-            <select name="status">
-                <option value="">Alle</option>
+            <select name="status">      <!-- Dropdown-menu til filtrering efter bilstatus -->
+                <option value="">Alle</option>  <!-- Viser alle biler i tabellen hvis ingen status er valgt -->
                 <option value="ledig">Ledig</option>
                 <option value="skadet">Skadet</option>
                 <option value="udlejet">Udlejet</option>
@@ -19,7 +20,7 @@
             <button type="submit">Filter</button>
         </form>
 
-
+        <!-- Tabel som viser biler hentet fra databasen -->
         <table>
             <thead>
             <tr>
@@ -35,8 +36,8 @@
             </thead>
 
             <tbody>
-            <tr th:each="car : ${carsFiltered}">
-                <td th:text="${car.carId}"></td>
+            <tr th:each="car : ${carsFiltered}">    <!-- (th:each) Thymeleaf loop som genererer en tabelrække for hver bil -->
+                <td th:text="${car.carId}"></td>    <!-- Thymeleaf bilens data som er dynamisk hentet fra backend til tabellen -->
                 <td th:text="${car.brand}"></td>
                 <td th:text="${car.model}"></td>
                 <td th:text="${car.price}"></td>
@@ -45,11 +46,11 @@
                 <td th:text="${car.status}"></td>
 
                 <td class="action-buttons">
-                    <button class="edit-button">Rediger</button>
-                    <button class="report-button">Skaderapport</button>
+                    <button class="edit-button">Rediger</button>    <!-- Knap til redigering af biloplysninger i tabellen( Virker Ikke ) -->
+                    <button class="report-button">Skaderapport</button>     <!-- Åbner skaderapport for den valgte bil( Virker Ikke ) -->
 
 
-                    <form th:action="@{/deleteCar}" method="post" style="display:inline;">
+                    <form th:action="@{/deleteCar}" method="post" style="display:inline;">  <!-- Knapper til handlinger relateret til den enkelte bil -->
                     <input type="hidden" name="carId" th:value="${car.carId}">
                     <button type="submit" class="delete-button">Slet</button>
                     </form>

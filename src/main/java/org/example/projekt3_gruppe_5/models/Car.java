@@ -1,5 +1,6 @@
 package org.example.projekt3_gruppe_5.models;
 
+//Malik
 public class Car {      // Model klasse som repræsenterer en bil i systemet.
     private int carId;          // Primær nøgle for bilen i databasen også kaldet vognnummer.
     private String brand;

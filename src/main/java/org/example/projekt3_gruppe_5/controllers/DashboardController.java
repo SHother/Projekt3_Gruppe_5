@@ -30,9 +30,9 @@ public class DashboardController {
     }
 
 // POPUP VINDUET
-
+// Ansvarlig Micki
+// Men alle har været inde over den
 // REGISTER CAR og OPRET SKADERAPPORT
-// Malik og Søren
     @GetMapping("/")    // Henter data til dashboardet såsom biler, leases, filtre og statistik til cirkeldiagrammerne.
     public String dashboard(
             @RequestParam(required = false) Boolean showPopup,
@@ -43,6 +43,7 @@ public class DashboardController {
             @RequestParam(required = false) String status,
             @RequestParam(required = false) String carId,
             Model model) {
+
 
         //alle biler til lageroversigt grafer
         model.addAttribute("cars", carService.getAllCars());

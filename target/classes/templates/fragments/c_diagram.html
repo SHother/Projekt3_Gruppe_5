@@ -1,20 +1,25 @@
-<div th:fragment="side-panel">   
+<div th:fragment="side-panel">   <!-- Thymeleaf fragment som bruges til dashboardets sidepanel -->
     
-    <div class="side-panel">
+    <div class="side-panel">    <!-- Container for dashboardets statistik og diagrammer -->
 
         <!-- Cirkel Diagram 1 - count - Ledig/Udlejet/skadet -------------------------------------------------------------------------- -->
 
-        <div class="diagram-box">
-            <h3>Lageroversigt i antal biler</h3>
+        <div class="diagram-box">   <!-- Wrapper til diagrammerne og dens statistik under diagrammet (samme er brugt til begge diagrammer da de skal have ens layout)-->
+            <h3>Lageroversigt i antal biler</h3>    <!-- Overskrift for diagram baseret på antal biler -->
 
-            <div class="circle-diagram"
+            <!-- Dynamisk cirkeldiagram genereret med CSS conic-gradient -->
+            <!-- Thymeleaf indsætter procentværdier fra backend direkte i CSS (ledigPctCount og udlejetPctCount)-->
+            <!-- Grøn farve repræsenterer ledige biler -->
+            <!-- Orange farve repræsenterer udlejede biler -->
+            <!-- Rød farve repræsenterer skadede biler -->
+            <div class="circle-diagram"     
                 th:style="'background: conic-gradient(' +
                 '#4caf50 0% ' + ${ledigPctCount} + '%, ' +
                 '#ff9800 0% ' + ${udlejetPctCount} + '%, ' +
                 '#f44336 0% 100%)'">
             </div>
 
-            <div class="diagram-status-box">
+            <div class="diagram-status-box">    <!-- Viser forklaring til diagrammets farver og antal taget fra backend (ledigCount, udlejetCount, skadetCount) -->
                 <p><span class="status-box-farve ledig"></span> Ledig:<span th:text="${ledigCount}"></span> biler</p>
                 <p><span class="status-box-farve udlejet"></span> Udlejet:<span th:text="${udlejetCount}"></span> biler</p>
                 <p><span class="status-box-farve skadet"></span> Skadet:<span th:text="${skadetCount}"></span> biler</p>
@@ -25,9 +30,14 @@
 
         <!-- Cirkel Diagram 2 - Prices i stedet for count ----------------------------------------------------------------------------- -->
 
-        <div class="diagram-box">
+        <div class="diagram-box">   <!-- Wrapper til diagrammerne og dens statistik under diagrammet -->
             <h3>Pris for bil status</h3>
 
+            <!-- Dynamisk cirkeldiagram genereret med CSS conic-gradient -->
+            <!-- Thymeleaf indsætter procentværdier fra backend direkte i CSS (ledigPctPrice og udlejetPctPrice)-->
+            <!-- Grøn farve repræsenterer ledige biler -->
+            <!-- Orange farve repræsenterer udlejede biler -->
+            <!-- Rød farve repræsenterer skadede biler -->
             <div class="circle-diagram"
                  th:style="'background: conic-gradient(' +
                 '#4caf50 0% ' + ${ledigPctPrice} + '%, ' +
@@ -35,7 +45,7 @@
                 '#f44336 0% 100%)'">
             </div>
 
-            <div class="diagram-status-box">
+            <div class="diagram-status-box">    <!-- Viser forklaring til diagrammets farver og antal taget fra backend (ledigPrice, udlejetPrice, skadetPrice) -->
                 <p><span class="status-box-farve ledig"></span> Ledig:<span th:text="${ledigPrice}"></span> kr</p>
                 <p><span class="status-box-farve udlejet"></span> Udlejet:<span th:text="${udlejetPrice}"></span> kr</p>
                 <p><span class="status-box-farve skadet"></span> Skadet:<span th:text="${skadetPrice}"></span> kr</p>
