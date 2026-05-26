@@ -44,7 +44,7 @@ class CarServiceTest {
         car.setPrice(-500);
 
         BadRequestException exception = assertThrows(BadRequestException.class, () -> carService.saveCar(car));
-        assertEquals("Pris skal være højere end 0", exception.getMessage());
+        assertEquals("Car price must be greater than 0", exception.getMessage());
         verify(carRepository, never()).insertCar(any());
     }
 }
