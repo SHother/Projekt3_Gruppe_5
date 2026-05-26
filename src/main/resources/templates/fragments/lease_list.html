@@ -1,9 +1,9 @@
-<div th:fragment="Lease-overview">
+<div th:fragment="Lease-overview">  <!-- Thymeleaf fragment som viser oversigt over leasingaftaler -->
     <!-- Søren --->
-        <div class="Car-overview">
+        <div class="Car-overview">  <!-- Genbruger samme layout/styling som biloversigten -->
 
 
-            <form method="get" action="/" class="filter-box">
+            <form method="get" action="/" class="filter-box">   <!-- Formular til filtrering af leasingaftaler baseret på bilens ID (vognnummer) -->
 
                 <input type="number"
                        name="carId"
@@ -12,7 +12,7 @@
                 <button type="submit">Filter</button>
             </form>
 
-
+            <!-- Tabel som viser leasingaftaler hentet fra databasen -->
         <table>
             <thead>
             <tr>
@@ -26,9 +26,9 @@
                 <th>Handlinger</th>
             </tr>
             </thead>
-
+            <!-- Dynamisk genererede rækker med leasingaftaler (data hentet fra backend med thymeleaf)-->
             <tbody>
-            <tr th:each="lease : ${leasesFiltered}">
+            <tr th:each="lease : ${leasesFiltered}">    <!-- (th:each) Thymeleaf loop som genererer en række i tabellen for hver leasingaftale -->
                 <td th:text="${lease.leaseId}"></td>
                 <td th:text="${lease.carId}"></td>
                 <td th:text="${lease.customerId}"></td>

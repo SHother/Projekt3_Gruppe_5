@@ -1,13 +1,13 @@
 package org.example.projekt3_gruppe_5.models;
 
-public class Car {
-    private int carId;
+public class Car {      // Model klasse som repræsenterer en bil i systemet.
+    private int carId;          // Primær nøgle for bilen i databasen også kaldet vognnummer.
     private String brand;
     private String model;
-    private String status; //ledig, skadet etc
-    private int price; //pris om måneden
-    private String fuelType;
-    private float mileage; // l/km
+    private String status;      // Bilens status "Ledig", "Udlejet" eller "Skadet".
+    private int price;          // Pris om måneden for at lease bilen
+    private String fuelType;    // Bilens "brændstofstype" (Benzin/Diesel/Hybrid/EL)
+    private float mileage;      // forstået som km per liter brændstofforbrug (km/l)( - EL biler )
 
     public Car(){}
     public Car(int carId, String brand, String model, String status, int price, String fuelType, float mileage){

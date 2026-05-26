@@ -1,13 +1,15 @@
 package org.example.projekt3_gruppe_5.models;
+// Søren
 
+// Modelklasse som repræsenterer en skade registreret på en leasingbil.
 public class Damage {
-    private int damageId;
-    private int carId;
-    private int leaseId;
+    private int damageId;           // Primær nøgle for skaden i databasen.
+    private int carId;              // carId refererer til bilen skaden tilhører.
+    private int leaseId;            // leaseId refererer til den leasingaftale hvor skaden blev registreret.
     private String title;
     private String description;
     private int price;
-    private String status;
+    private String status;          // Status kan være "Udbedret", "Under udbedring" eller "Ikke indberettet".
 
     public Damage() {}
     public Damage(int damageId, int carId, int leaseId, String title, String description, int price, String status) {

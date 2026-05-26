@@ -1,14 +1,14 @@
 <div th:fragment="registerCarPopup">  
     
-    <div th:if="${showPopup}" class="popup-overlay">
+    <div th:if="${showPopup}" class="popup-overlay">    <!-- Popup vises kun hvis showPopup=true sendes fra controlleren -->
 
         <div class="popup-container">
 
             <h1>Registrer Bil</h1>
 
-            <form action="/saveCar" method="post">
+            <form action="/saveCar" method="post">  <!-- Sender data til backend for at oprette en ny bil -->
 
-                <div class="form-group">
+                <div class="form-group">    <!-- Wrapper som grupperer label og input for ens layout, også  brugt i de andre popup vinduer for ens layout(register_customer.html og register_lease.html) -->
                     <label>Mærke</label>
                     <input type="text" name="brand">
                 </div>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="button-group">
-                    <button type="submit" class="save-btn">Opret Bil</button>
+                    <button type="submit" class="save-btn">Opret Bil</button>   <!-- Lukker popup-vinduet ved at navigere tilbage til forsiden -->
                     <a th:href="@{/}" class="cancel-btn">Annuller</a>
                 </div>
 

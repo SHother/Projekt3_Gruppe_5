@@ -1,23 +1,22 @@
 package org.example.projekt3_gruppe_5.services;
 
+import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
 import org.example.projekt3_gruppe_5.models.Customer;
 import org.example.projekt3_gruppe_5.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
-import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
 //Skrevet af Gustav
 @Service
 public class CustomerService {
-//Gustav
 
     private final CustomerRepository customerRepository;
 
     public CustomerService(CustomerRepository customerRepository) {
     this.customerRepository = customerRepository;
 }
-
+    // Validerer kundeoplysninger før kunden gemmes i databasen.
     public void createCustomer(String customerName, String address, String city, String zipCode, String email, String phone){
-        if (customerName == null || customerName.isEmpty()) {
-            throw new BadRequestException("Kundenavn er obligatorisk");
+        if (customerName == null || customerName.isEmpty()) {       // Sikrer at kundenavn er udfyldt før oprettelse.
+            throw new BadRequestException("Kundenavn er obligatorisk"); 
         }
 
         if (address == null || address.isEmpty()) {
@@ -39,7 +38,7 @@ public class CustomerService {
         if (phone == null || phone.isEmpty()) {
             throw new BadRequestException("Telefon Nummer er obligatorisk");
         }
-        Customer customer = new Customer();
+        Customer customer = new Customer(); // Opretter Customer objekt som sendes videre til customerRepository.
         customer.setCustomerName(customerName);
         customer.setAddress(address);
         customer.setCity(city);

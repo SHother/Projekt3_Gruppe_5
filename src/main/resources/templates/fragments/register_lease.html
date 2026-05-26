@@ -1,13 +1,13 @@
-<div th:fragment="leasePopup">
+<div th:fragment="leasePopup">  <!-- Thymeleaf fragment som indeholder popup til oprettelse af lejeaftaler -->
 
-    <div th:if="${showLeasePopup}" class="popup-overlay">
+    <div th:if="${showLeasePopup}" class="popup-overlay">   <!-- Popup vises kun hvis showLeasePopup=true sendes fra controlleren -->
 
         <div class="popup-container">
             <h1>Registrer ny lejeaftale</h1>
 
-            <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+            <p th:if="${error}" th:text="${error}" style="color: red;"></p> <!-- Viser fejlbesked fra backend hvis validering fejler -->
 
-            <form action="/register_lease" method="post">
+            <form action="/register_lease" method="post">   <!-- Sender lejeaftale data til backend via POST request -->
 
                 <div class="form-group">
                     <label>Kundenavn</label>
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label>Vognnummer</label>
                     <select id="carId" name="carIdAsString">
-                        <option value=-1>-</option>
+                        <option value=-1>-</option> <!-- (th:each) Thymeleaf loop som viser alle ledige biler -->
                         <option
                                 th:each="car : ${availableCars}"
                                 th:value="${car.carId}"

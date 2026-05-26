@@ -2,12 +2,13 @@ package org.example.projekt3_gruppe_5.models;
 
 import java.time.LocalDate;
 
+// Modelklasse som repræsenterer en leasingaftale i systemet.
 public class Lease {
-    private int leaseId;
-    private int carId;
-    private int customerId;
-    private LocalDate pickupDate;
-    private LocalDate turnInDate;
+    private int leaseId;            // Primær nøgle for leasingaftalen i databasen.
+    private int carId;              // Referencer til bil som er knyttet til leasingaftalen.
+    private int customerId;         // Referencer til Kunde som er knyttet til leasingaftalen.
+    private LocalDate pickupDate;   // Leasing periodens start dato
+    private LocalDate turnInDate;   // Leasing periodens slut dato
     private String pickupLocation;
     private String turnInLocation;
 

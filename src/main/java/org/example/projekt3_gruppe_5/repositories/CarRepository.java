@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
+// Repository håndterer databaseoperationer relateret til biler.
 @Repository
 public class CarRepository {
     private final JdbcTemplate jdbcTemplate;
@@ -17,12 +19,12 @@ public class CarRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public  List<Car> allCars() {
+    public  List<Car> allCars() {       // Henter alle biler fra databasen.
         String sql = "SELECT * FROM car";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Car.class));
     }
 
-    public void updateCarStatus(int carId, String status) {
+    public void updateCarStatus(int carId, String status) {      // Opdaterer bilens status i databasen.
         String sql = "UPDATE car SET status = ? WHERE car_id = ?";
         jdbcTemplate.update(sql, status, carId);
     }
@@ -43,22 +45,22 @@ public class CarRepository {
         );
     }
 
-
-    // Checker ikke om bilen har en foreign key et andet sted, så chaser, hvis bil er i en lease i databasen
+    // Sletter en bil fra databasen baseret på carId.
+    // Checker ikke om bilen har en foreign key et andet sted, så programmet crasher hvis bil er i en lease i databasen
     public void deleteCar(int carId) {
     String sql = "DELETE FROM car WHERE car_id = ?";
     jdbcTemplate.update(sql, carId);
     }
 
-
-    // NY cirkel diagram car status ****TESTING*****--------------------------------------------------------
+    // cirkel diagram car status - returnerer antal biler grupperet efter status til dashboard-cirkeldiagram 1 (lageroverblik).
     public Map<String, Integer> getStatusCounts() {
         String sql = """
             SELECT status, COUNT(*) as count
             FROM car
             GROUP BY status
         """;
-
+        // "SQL GROUP BY" bruges til at tælle biler inden for hver statuskategori.
+        
         return jdbcTemplate.query(sql, rs -> {
             Map<String, Integer> map = new HashMap<>();
             while (rs.next()) {

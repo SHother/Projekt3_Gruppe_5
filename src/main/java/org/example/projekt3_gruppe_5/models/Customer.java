@@ -1,8 +1,11 @@
 package org.example.projekt3_gruppe_5.models;
+
+
+// Modelklasse som repræsenterer en kunde i systemet.
 //Skrevet af Gustav
 public class Customer {
-    private int customerId;
-    private String customerName;
+    private int customerId;             // Primær nøgle for kunden i databasen.
+    private String customerName;        // Kundens fulde navn
     private String address;
     private String city;
     private String zipCode;

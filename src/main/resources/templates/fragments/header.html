@@ -1,12 +1,12 @@
-<div th:fragment="navbar">
+<div th:fragment="navbar">  <!-- Thymeleaf fragment som indeholder navigationen til dashboardet -->
 
     <header>
         <nav>
             <ul>
-                <li><a th:href="@{/(showPopup=true)}">Registrer ny bil</a></li>
-                <li><a th:href="@{/(showDamagePopup=true)}">Opret skadesrapport</a></li>
-                <li><a th:href="@{/(showCustomerPopup=true)}">Ny kunde</a></li>
-                <li><a th:href="@{/(showLeasePopup=true)}">Ny lejeaftale</a></li>
+                <li><a th:href="@{/(showPopup=true)}">Registrer ny bil</a></li>             <!-- Åbner popup til registrering af ny bil -->
+                <li><a th:href="@{/(showDamagePopup=true)}">Opret skadesrapport</a></li>    <!-- Åbner popup til oprettelse af skadesrapport -->
+                <li><a th:href="@{/(showCustomerPopup=true)}">Ny kunde</a></li>             <!-- Åbner popup til oprettelse af ny Kunde -->
+                <li><a th:href="@{/(showLeasePopup=true)}">Ny lejeaftale</a></li>           <!-- Åbner popup til oprettelse af ny lejeaftale -->
                 <li class="logout"><a th:href="@{/logout}">Logout</a></li>
             </ul>
         </nav>

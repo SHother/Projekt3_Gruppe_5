@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.example.projekt3_gruppe_5.models.Car;
-import org.example.projekt3_gruppe_5.models.Customer;
 import org.example.projekt3_gruppe_5.models.Lease;
 import org.example.projekt3_gruppe_5.services.CarService;
 import org.example.projekt3_gruppe_5.services.LeaseService;
@@ -17,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+// Controller håndterer requests til dashboardet.
+
+// Søren
 @Controller
 public class DashboardController {
     private final CarService carService;
@@ -27,11 +29,11 @@ public class DashboardController {
         this.leaseService = leaseService;
     }
 
-// POPUP VINDUET*** TEST TEST ***
+// POPUP VINDUET
 
 // REGISTER CAR og OPRET SKADERAPPORT
-
-    @GetMapping("/")
+// Malik og Søren
+    @GetMapping("/")    // Henter data til dashboardet såsom biler, leases, filtre og statistik til cirkeldiagrammerne.
     public String dashboard(
             @RequestParam(required = false) Boolean showPopup,
             @RequestParam(required = false) Boolean showDamagePopup,
@@ -50,7 +52,7 @@ public class DashboardController {
 
         model.addAttribute("leasesFiltered", leaseService.filterLeases(carId));
 
-        //pop-ups
+        // Styrer om popup-vinduer skal vises i frontend.
         model.addAttribute("showPopup", showPopup != null && showPopup);
         model.addAttribute("showDamagePopup", showDamagePopup != null && showDamagePopup);
         model.addAttribute("showCustomerPopup", showCustomerPopup != null && showCustomerPopup);
@@ -63,8 +65,8 @@ public class DashboardController {
         model.addAttribute("lease", new Lease());
 
 
-        // NY cirkel diagram car status ****TESTING*****
-        // TODO: skal tildels rykkes til en Service klasse.. måske
+        // NY cirkel diagram car status
+        // Henter antal biler fordelt på status til cirkeldiagrammet.
         Map<String, Integer> counts = carService.getStatusCounts();
 
         int ledigCount = counts.getOrDefault("ledig", 0);
@@ -76,15 +78,15 @@ public class DashboardController {
         int total = ledigCount + udlejetCount + skadetCount;
         if (total == 0) total = 1;
 
-        //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0 på (linje 83)
+        //  bruger "total == 1" hvis "total == 0" så vi ikke dividere med 0, hvis databasen ikke indeholde nogle biler.
 
         model.addAttribute("ledigCount", ledigCount);
         model.addAttribute("udlejetCount", udlejetCount);
         model.addAttribute("skadetCount", skadetCount);
         model.addAttribute("total", total);
 
-        double ledigPct = (ledigCount * 100.0) / total;
-        double udlejetPct = ((ledigCount + udlejetCount) * 100.0) / total;
+        double ledigPct = (ledigCount * 100.0) / total;         // Beregner procentdelen af ledige biler til cirkeldiagrammet.
+        double udlejetPct = ((ledigCount + udlejetCount) * 100.0) / total;  // Beregner procentdelen af udlejetbiler biler til cirkeldiagrammet.
 
         model.addAttribute("ledigPctCount", ledigPct);
         model.addAttribute("udlejetPctCount", udlejetPct);
@@ -104,6 +106,7 @@ public class DashboardController {
 
     // Tager mærke og status fra filter formen og videregiver til Service klassen
     // Får
+    // Søren
     @GetMapping("/carFilter")
     public String showCars(
             @RequestParam(required = false) String brand,
@@ -118,14 +121,14 @@ public class DashboardController {
 
 
     // @ModelAttribute mapper automatisk form-input fra HTML felter til et Car objekt
+    // Malik
     @PostMapping("/saveCar")
     public String saveCar(@ModelAttribute Car car) {
-        //TODO: check input
         carService.saveCar(car);
         return "redirect:/";
     }
 
-    @PostMapping("/deleteCar")
+    @PostMapping("/deleteCar")  // Sletter en bil baseret på carId fra frontend.
     public String deleteCar(@RequestParam int carId) {
         carService.deleteCar(carId);
         return "redirect:/";

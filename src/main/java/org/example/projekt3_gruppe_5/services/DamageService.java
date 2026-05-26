@@ -1,17 +1,18 @@
 package org.example.projekt3_gruppe_5.services;
 
+import java.util.List;
+
+import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
+import org.example.projekt3_gruppe_5.exceptions.ResourceNotFoundException;
 import org.example.projekt3_gruppe_5.models.Damage;
 import org.example.projekt3_gruppe_5.repositories.DamageRepository;
-import org.springframework.stereotype.Service;
-import org.example.projekt3_gruppe_5.exceptions.ResourceNotFoundException;
-import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class DamageService {
-
+// Micki
     private final DamageRepository damageRepository;
 
     public DamageService(DamageRepository damageRepository) {
@@ -23,11 +24,11 @@ public class DamageService {
     }
 
     public void insert(Damage damage) {
-        if (damage == null) {
+        if (damage == null) {                // Sikrer at der ikke sendes et tomt Damage-objekt videre til databasen.
             throw new BadRequestException("Damage object cannot be null");
         }
 
-        if (damage.getCarId() <= 0) {
+        if (damage.getCarId() <= 0) {        // Validerer at bilen har et gyldigt ID.
             throw new BadRequestException("Car ID must be a positive number");
         }
 
@@ -35,7 +36,7 @@ public class DamageService {
             throw new BadRequestException("Damage description is required");
         }
 
-        if (damage.getPrice() < 0) {
+        if (damage.getPrice() < 0) {          // Pris må ikke være negativ.
             throw new BadRequestException("Damage price cannot be negative");
         }
 
@@ -52,7 +53,7 @@ public class DamageService {
         }
 
         try {
-            return damageRepository.findById(id);
+            return damageRepository.findById(id);   // Håndterer tilfælde hvor skaden ikke findes i databasen.
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException("Damage with ID " + id + " not found");
         }

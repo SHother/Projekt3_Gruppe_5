@@ -1,16 +1,15 @@
 package org.example.projekt3_gruppe_5.services;
 
-import org.example.projekt3_gruppe_5.models.Customer;
-import org.example.projekt3_gruppe_5.repositories.CustomerRepository;
-import org.example.projekt3_gruppe_5.repositories.LeaseRepository;
-import org.springframework.stereotype.Service;
-import org.example.projekt3_gruppe_5.models.Lease;
-import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
-
+import static java.lang.Integer.parseInt;
 import java.time.LocalDate;
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
+import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
+import org.example.projekt3_gruppe_5.models.Customer;
+import org.example.projekt3_gruppe_5.models.Lease;
+import org.example.projekt3_gruppe_5.repositories.CustomerRepository;
+import org.example.projekt3_gruppe_5.repositories.LeaseRepository;
+import org.springframework.stereotype.Service;
 
 @Service
 public class LeaseService {
@@ -26,7 +25,7 @@ public class LeaseService {
 
     public void createLease(int customerId, int carId, LocalDate pickupDate, LocalDate turnInDate, String pickUpLocation, String turnInLocation) {
         //Søren
-
+        // Validerer leasingdata før leasingaftalen gemmes i databasen.
         if (customerId <= 0) {
             throw new BadRequestException("Kundenavn er obligatorisk");
         }
@@ -61,17 +60,17 @@ public class LeaseService {
 
         leaseRepository.createLease(lease);
     }
-
+    // Henter alle kunder til brug i dropdown-menuer i frontend.
     public List<Customer> getAllCustomers() {
         return customerRepository.allCustomer();
     }
-
+    // Filtrerer leasingaftaler baseret på valgt bil.
     public List<Lease> filterLeases(String carId) {
         List<Lease> leases = getAllLeases();
 
         if (carId != null && !carId.isEmpty()) {
             int carIdint = parseInt(carId);
-            leases = leases.stream()
+            leases = leases.stream()    // Java .streams bruges til at filtrere leasingaftaler dynamisk.
             .filter(c -> c.getCarId() == carIdint)
             .toList();
         }

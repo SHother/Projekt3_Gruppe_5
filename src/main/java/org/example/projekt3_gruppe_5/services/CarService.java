@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.example.projekt3_gruppe_5.exceptions.ResourceNotFoundException;
 import org.example.projekt3_gruppe_5.exceptions.BadRequestException;
+import org.example.projekt3_gruppe_5.exceptions.ResourceNotFoundException;
 import org.example.projekt3_gruppe_5.models.Car;
 import org.example.projekt3_gruppe_5.repositories.CarRepository;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,13 @@ public class CarService {
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
-
-    public List<Car> filterCars(String brand, String status) {
+    // Filtrerer biler dynamisk baseret på brugerens søgekriterier.
+    public List<Car> filterCars(String brand, String status) {  
 
         List<Car> cars = getAllCars();
 
         if (brand != null && !brand.isEmpty()) {
-            cars = cars.stream()
+            cars = cars.stream()    // Java .streams bruges til at filtrere lister på en mere læsbar måde.
                     .filter(c -> c.getBrand().toLowerCase()
                     .contains(brand.toLowerCase()))
                     .toList();
@@ -85,12 +85,12 @@ public class CarService {
     }
 */
     public void updateStatus(int carId, String status) {
-        if (status == null || status.isEmpty()) {
+        if (status == null || status.isEmpty()) {    // Validerer at status ikke er tom før databasen opdateres.
             throw new BadRequestException("Status cannot be empty");
         }
 
         List<Car> cars = getAllCars();
-        boolean carExists = cars.stream().anyMatch(c -> c.getCarId() == carId);
+        boolean carExists = cars.stream().anyMatch(c -> c.getCarId() == carId); // Kontrollerer at bilen eksisterer før update eller delete udføres.
 
         if (!carExists) {
             throw new ResourceNotFoundException("Car with ID " + carId + " not found");
@@ -144,7 +144,7 @@ public void saveCar(Car car) {
      carRepository.deleteCar(carId);
  }
 
-    // NY cirkel diagram car status ****TESTING*****
+    // NY cirkel diagram car status
     public Map<String, Integer> getStatusCounts() {
         return carRepository.getStatusCounts();
     }
