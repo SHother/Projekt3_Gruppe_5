@@ -50,7 +50,7 @@ header nav ul{
     top:0;
     width:100%;
 
-    background:#696969;
+    background:#1892c3;
 
     z-index:1000;
 }
@@ -187,7 +187,7 @@ header nav ul li a:hover{
 }
 
 .filter-box button{
-    background:#696969;
+    background:#1892c3;
     color:white;
     border:none;
 
@@ -198,7 +198,7 @@ header nav ul li a:hover{
 }
 
 .filter-box button:hover{
-    background:#acabab;
+    background:#61c1d8;
 }
 
 /* 4 - Bil Tabel------------------------------------------------------------ */
@@ -209,7 +209,7 @@ table{
 }
 
 thead{
-    background:#696969;
+    background: #1892c3;
     color:white;
 }
 
@@ -432,7 +432,7 @@ tbody tr:hover{
 }
 
 .save-btn{
-    background:#999;
+    background:#61c1d8;
     color:white;
 
     border:none;
@@ -447,7 +447,7 @@ tbody tr:hover{
 }
 
 .save-btn:hover{
-    background:#777;
+    background:#1892c3;
 }
 
 .cancel-btn{
